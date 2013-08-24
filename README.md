@@ -1,6 +1,6 @@
 vsns
 ====
-
+crystal
 vertical sns with big pie team
 
 2013년 8월 24일, hschoi 브랜치에 추가된 내용
