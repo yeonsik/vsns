@@ -3,7 +3,7 @@ vsns
 
 vertical sns with big pie team
 
-2013년 8월 24일, H.S.Choi 가 추가한 내용
+2013년 8월 24일, hschoi 브랜치에 추가된 내용
 
 1. 전체 레이아웃을 가로 2단으로 구성하였고, 약간의 리팩토링을 수행하였습니다. 
 2. file upload시 한글파일명일 경우 한글이 밑줄로 표시되는 것을 한글이 제대로 표시되도록 하였습니다. (config/initializers/carrierwave.rb 파일을 추가했습니다.)
