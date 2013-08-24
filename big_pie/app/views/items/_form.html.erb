@@ -1,0 +1,14 @@
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.try(:id) }  %>
+    <%= f.input :photo %>
+    <%= f.input :url_ref %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

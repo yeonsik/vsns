@@ -1,0 +1,12 @@
+<%= content_for :item_content do %>
+  <div class='row-fluid'>
+    <div class='span9'>
+    <%= yield %>
+    </div>
+    <div class='span3'>
+      <%= render "layouts/shared/sidebar" %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

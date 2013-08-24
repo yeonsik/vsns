@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+  <div class='user_profile well'>
+    <% if @other_user %>
+      <div class='photo'>
+        <%= image_tag @other_user.avatar_url(:profile), style: "text-align:center;" %>
+      </div>
+      <div class='info'>
+        <%= @other_user.email %>
+      </div>  
+      <div id='following_status' class='following_status'>
+        <%= render 'layouts/shared/following_status'%>
+      </div>
+    <% else %>
+    <div class='photo'>
+      <%= image_tag current_user.avatar_url(:profile), style: "text-align:center;" %>
+    </div>
+    <div class='info'>
+      <%= current_user.email %>
+    </div>
+    <div>
+      Followers: <%= current_user.followers.size %> |
+      Followings: <%= current_user.followings.size %>
+    </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class='user_profile well'>
+    <div class="photo">
+      <%= image_tag "fallback/profile_default.png" %>
+    </div>
+    <div class="info">
+      <%= link_to "Please sign in,", new_user_session_path %>
+      <%= link_to "or sign up!", new_user_registration_path %>
+    </div>
+  </div>
+<% end %>

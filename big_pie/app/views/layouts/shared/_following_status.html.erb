@@ -1,0 +1,4 @@
+<div class="btn-group"> 
+  <button class='btn btn-small'><%= link_to_unless current_user.following?(@other_user), 'Follow', follow_user_path(current_user, @other_user), remote: true %></button>
+  <button class='btn btn-small'><%= link_to_if current_user.following?(@other_user), 'Unfollow', unfollow_user_path(current_user, @other_user), remote: true %></button>
+</div>

@@ -1,0 +1,27 @@
+<p>
+  <strong>User:</strong>
+  <%= @item.user.email %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= link_to image_tag(@item.photo_url(:post_image)),  @item.photo_url %>
+</p>
+
+<p>
+  <strong>Url ref:</strong>
+  <%= @item.url_ref %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Starts count:</strong>
+  <%= @item.starts_count %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
