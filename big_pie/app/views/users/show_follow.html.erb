@@ -1,0 +1,12 @@
+<h3><%= action_name.humanize %></h3>
+
+<ul class="thumbnails">
+  <% if @users.size > 0 %>
+    <% @users.each do | user | %>
+      <li class="span2">
+        <%= link_to image_tag(user.avatar_url(:profile), size: '60'), items_path(user_id: user.id), class:'thumbnail', title: user.email, data:{toggle:'tooltip'} %>
+      </li>
+    <% end %>
+  <% else %>
+      <li>: I'm sorry, but there are no <%= action_name %> yet.</li>
+  <% end %>

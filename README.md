@@ -3,6 +3,16 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => 본인의 계정정보를 수정할 수 있게 함.
+
+1. item form에 업로드된 photo 가 있는 경우 이미지를 표시하고 이미지를 삭제할 수 있는 checkbox를 추가하였습니다. 삭제 checkbox를 체크한 후 submit 하면 이제부터는 이미지가 삭제됩니다. 
+2. item index 페이지에서도 각 포스트마다 tag 리스트를 보이게 했습니다. 
+3. followers와 followings 리스트를 볼 수 있도록 링크를 연결하였습니다. 
+4. navbar의 로그인 정보를 오른쪽으로 배열했습니다. 
+5. 그리고 로그인 상태에서는 현재 로그인한 사용자의 이메일 주소가 navbar에 표시되도록 하였습니다. 
+6. 또한 이메일 메뉴의 하위 메뉴를 두어 본인의 계정 정보를 수정할 수 있게 하였습니다. 
+7. will_paginate 젬 추가하였습니다. 
+
 #### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => Summernote 위지위크 에디터 추가함.
 
 1. item form의 description 내용을 입력하는 창에 summernote 위지위그 에디터를 붙였습니다. 이를 위해 `summernote-rails` 라는 젬을 추가했습니다. 참고로 카카오의 홍영택님이 만드신 summernote 에디터를 rails에서 쉽게 사용할 수 있도록 제가 만든 젬입니다만, 시험적으로 사용해 봤습니다. 그런데로 괜찮습니다. 
@@ -11,6 +21,7 @@ vsns
 4. item form의 file upload를 이준헌님이 만들어 놓으신 것을 참고하여 simple_form_bootstrap_file_input.rb 파일을 config/initializers 디렉토리에 추가하여 이쁘게 보이도록 했습니다. 감사드립니다. 
 5. item photo 입력을 로컬머신의 시스템 파일 뿐만 아니라 이미지 URL을 입력해도 업로드가 가능하도록 했습니다. 이를 우해서 item.rb 모델 클래스에 attr_accessor :remote_photo_url 을 지정해 주었구요. items_controller.rb 파일의 item_params의 permit 옵션에 :remote_photo_url 항목을 추가해 주었습니다.
 6. 그리고 items 테이블의 description 필드의 데이터 속성을 string 에서 text 로 변경하였습니다. 
+7. items 보여지는 순서를 updated_at 날짜를 DESC로 지정했습니다. 이제 최근 갱신글이 가장 위로 보이게 됩니다. 
 
 
 #### 2013년 8월 25일, bbugguj 브랜치에 추가된 내용 => Tagging 기능 추가

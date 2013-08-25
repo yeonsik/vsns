@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+  layout "two_columns"
+
   def followings
     @title = "Following"
     @user = User.find(params[:id])
-    @users = @user.followed_users.paginate(page: params[:page])
+    @users = @user.followings.paginate(page: params[:page])
     render 'show_follow'
   end
 

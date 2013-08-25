@@ -1,4 +1,7 @@
 $ ->
+  $('.thumbnail').tooltip
+    placement: 'bottom'
+
   # to set summernote object
   # You should change '#post_content' to your textarea input id
   summer_note = $('#item_description')

@@ -48,6 +48,8 @@ gem 'rmagick'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
+gem 'will_paginate'
+
 group :development do
 	gem "better_errors"
 	gem "binding_of_caller"

@@ -6,7 +6,7 @@ module SimpleForm
         input_html_options[:style] ||= 'display:none;'
 
         button = template.content_tag(:div, class: 'input-append') do 
-          template.tag(:input, id: "pbox_#{idf}", class: 'string input-medium span12', type: 'text') +
+          template.tag(:input, id: "pbox_#{idf}", class: 'string input-medium', type: 'text') +
           template.content_tag(:a, "Browse", class: 'btn', onclick: "$('input[id=#{idf}]').click();")
         end
 
