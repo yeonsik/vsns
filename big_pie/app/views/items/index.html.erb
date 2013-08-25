@@ -1,9 +1,3 @@
-<ul class="items"> 
-  <% @items.each do |item| %>
-  <li>
-    <%= link_to image_tag(item.photo_url(:post_image)), item %>
-    <p> <%= link_to_unless item.user == current_user, item.user.email, items_path(user_id: item.user_id) %> </p>  
-    <p> <%= item.description %> </p>
-  </li>
-  <% end %>
-</ul>
+<div class="items"> 
+  <%= render @items %>
+</div>
