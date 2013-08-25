@@ -5,7 +5,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    if params[:tag]
+      @items = Item.tagged_with(params[:tag])
+    else
+      @items = Item.all
+    end
     if params[:user_id]
       @other_user = User.find(params[:user_id])
       @items = @items.where( user_id: @other_user.id) 
@@ -74,6 +78,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count)
+      params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count, :tag_list)
     end
 end
