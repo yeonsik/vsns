@@ -1,0 +1,17 @@
+<div class="item media">
+  <a class="pull-left" href="#">
+    <img class="media-object" data-src="holder.js/64x64">
+    <%= image_tag item.photo_url, size: '200' %>
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><%= link_to item.user.email, items_path(other_id: item.user_id) %></h4>
+    <div class='description'>
+      <%= item.description %>
+    </div>
+    <div class='actions'>
+      <%= link_to 'Show', item_path(item), class:'btn' %>
+      <%= link_to 'Edit', edit_item_path(item), class:'btn' %>
+      <%= link_to 'Destroy', item, method: :delete, data:{confirm: 'Are you sure?'}, class:'btn' %>
+    </div>
+  </div>
+</div>
