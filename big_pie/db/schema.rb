@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825013413) do
+ActiveRecord::Schema.define(version: 20130825050257) do
 
   create_table "items", force: true do |t|
     t.integer  "user_id"
     t.string   "photo"
     t.string   "url_ref"
-    t.string   "description"
-    t.integer  "starts_count", default: 0
+    t.text     "description",  limit: 255
+    t.integer  "starts_count",             default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

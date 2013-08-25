@@ -24,6 +24,9 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# To resolve turblink problems added by hschoi
+gem 'jquery-turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -34,7 +37,8 @@ end
 
 gem 'less-rails'
 gem "twitter-bootstrap-rails"
-gem 'flatui-rails'
+# gem 'flatui-rails'
+gem 'summernote-rails'
 
 gem 'simple_form', github: 'plataformatec/simple_form', tag: 'v3.0.0.rc'
 

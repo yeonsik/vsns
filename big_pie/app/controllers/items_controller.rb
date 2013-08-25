@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
       @other_user = User.find(params[:user_id])
       @items = @items.where( user_id: @other_user.id) 
     end
+    @items = @items.order(updated_at: :desc)
   end
 
   # GET /items/1
@@ -78,6 +79,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count, :tag_list)
+      params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count, :tag_list, :remote_photo_url)
     end
 end

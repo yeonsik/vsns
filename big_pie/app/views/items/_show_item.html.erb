@@ -6,7 +6,7 @@
     <%= item.user.email %> (<%= time_ago_in_words(item.created_at)%> ago)
   </div>
   <div class='description'>
-    <%= item.description %>
+    <%=raw item.description %>
   </div>
   <div class='tag_list' %>
     Tags: <%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
