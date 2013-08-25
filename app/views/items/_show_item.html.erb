@@ -1,0 +1,19 @@
+<div class='show_item'>
+  <div class='photo'>
+    <%= image_tag(item.photo_url) %>
+  </div>
+  <div class='user'>
+    <%= item.user.email %> (<%= time_ago_in_words(item.created_at)%> ago)
+  </div>
+  <div class='description'>
+    <%=raw item.description %>
+  </div>
+  <div class='tag_list' %>
+    Tags: <%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  </div>
+  <div class='start_count' %>
+    Start Count: <%= @item.starts_count %>
+  </div>
+</div>
+
+
