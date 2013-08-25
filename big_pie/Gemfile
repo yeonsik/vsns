@@ -49,15 +49,18 @@ gem 'rmagick'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 gem 'will_paginate'
-
-group :development do
-	gem "better_errors"
-	gem "binding_of_caller"
-	gem 'meta_request'
-end
-
 gem 'acts-as-taggable-on'
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'meta_request'
+end
+
+group :proudction do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

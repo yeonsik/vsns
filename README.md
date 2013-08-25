@@ -3,6 +3,48 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => 배포 시물레이션 목적으로 heroku에 배포
+
+* Heroku에 배포하기 위해서는 Gemfile에 아래의 젬을 추가해야만 합니다. 
+
+```
+group :proudction do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+```
+
+* CLI에서 아래와 같이 heroku에 웹서버를 생성하고 git 저장소까지 동시에 만들었습니다. 
+
+```
+$ heroku create
+Creating rocky-river-7728... done, stack is cedar
+http://rocky-river-7728.herokuapp.com/ | git@heroku.com:rocky-river-7728.git
+```
+
+* git config 파일을 열어 remote 저장소에 heroku를 추가해 주었습니다. 
+
+```
+$ git config -e
+
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = false
+[branch "master"]
+[remote "origin"]
+  url = git@github.com:bigpie/vsns.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "heroku"]
+  url = git@heroku.com:rocky-river-7728.git
+  fetch = +refs/heads/*:refs/remotes/heroku/*
+```
+
+
+
 #### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => 본인의 계정정보를 수정할 수 있게 함.
 
 1. item form에 업로드된 photo 가 있는 경우 이미지를 표시하고 이미지를 삭제할 수 있는 checkbox를 추가하였습니다. 삭제 checkbox를 체크한 후 submit 하면 이제부터는 이미지가 삭제됩니다. 
