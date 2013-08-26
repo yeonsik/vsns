@@ -45,7 +45,8 @@ gem 'summernote-rails'
 
 gem 'simple_form', github: 'plataformatec/simple_form', tag: 'v3.0.0.rc'
 
-gem 'carrierwave'
+# gem 'carrierwave'
+gem 'carrierwave-aws'  # added by hschoi
 
 gem 'rmagick'
 
