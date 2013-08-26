@@ -52,12 +52,14 @@ test:
   password:
 
 production:
+  host: rocky-river-7728.herokuapp.com
   adapter: postgresql
   encoding: unicode
   database: big_pie_production
   pool: 5
+  port: 5432
   username: rorlab
-  password:
+  password: 
 
 
 # SQLite version 3.x
