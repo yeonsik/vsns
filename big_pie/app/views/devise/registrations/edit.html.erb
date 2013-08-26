@@ -6,6 +6,14 @@
   <div class="form-inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :avatar, as: :file %>
+    <% if resource.avatar? %>
+    <div class='row-fluid'>
+      <div class='fixed-label'>
+        <%= image_tag(resource.avatar_url(:profile)) %>
+        <label id='<%= resource_name %>_remove_avatar'><%= f.check_box :remove_avatar, style:'margin-top:0;' %><span class='help-inline'>remove</span></label>
+      </div>
+    </div>
+    <% end %>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>

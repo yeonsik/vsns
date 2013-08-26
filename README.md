@@ -3,6 +3,65 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 26일, hschoi 브랜치에 추가된 내용
+
+##### Carrierwave젬의 저장소로 aws 를 사용하기
+
+* 이를 위한 젬 추가 : carrierwave-aws (Gemfile에 추가하고 bundle install)
+
+* config/initializers/carrierwave.rb 파일을 생성한 후 아래와 같이 carrierwave 설정추가하기 (환경변수는 aws 본인계정에서 관련정보를 얻을 수 있슴)
+
+```
+CarrierWave.configure do |config|
+  config.storage    = :aws
+  config.aws_bucket = ENV['S3_BUCKET_NAME']
+  config.aws_acl    = :public_read
+  config.asset_host = 'http://[bucket_name].s3-website-ap-northeast-1.amazonaws.com'
+  config.aws_authenticated_url_expiration = 60 * 60 * 24 * 365
+
+  config.aws_credentials = {
+    access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  }
+end
+```
+heroku에서 환경변수를 지정하는 방법이 따로 있군요. 
+참고(https://devcenter.heroku.com/articles/s3)
+
+```
+$ heroku config:set AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=yyy
+```
+
+bucket name 환경변수는 다음과 같이 지정합니다. bucket name 생성하는 방법은 https://console.aws.amazon.com/s3/home 참조하세요. (bucket은 아마존 S3 저장소임) 
+
+```
+$ heroku config:set S3_BUCKET_NAME=appname-assets
+```
+
+#### User account 기능기능 추가
+
+* 사용자 계정정보를 변경시 프로필 사진을 삭제할 수 있도록 remove 체크박스를 추가하였습니다. 본인의 프로필 사진을 업로드했다가 삭제하고 싶을 때 체크하면 됩니다. 프로필 사진을 변경하고자 할 때는 다시 파일업로드하면 됩니다. 
+
+* [주의사항] Devise 젬을 Rails 4에서 사용할 때는 strong parameters에 대한 부분을 추가해 주어야 합니다. 이에 대한 참고는 https://github.com/plataformatec/devise#strong-parameters 입니다. 
+
+```
+class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+
+  # Devise with strong parameters
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:avatar, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:avatar, :email, :password, :password_confirmation, :current_password, :remove_avatar) }
+  end
+end
+```
+
 #### 2013년 8월 26일, hschoi 브랜치에 추가된 내용 => 배포 시물레이션 목적으로 heroku에 배포
 
 ###### Heroku에 배포하기 위해서 작업한 내용을 요약해 둡니다.
