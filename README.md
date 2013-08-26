@@ -3,46 +3,73 @@ vsns
 
 : vertical sns with big pie team
 
-#### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => 배포 시물레이션 목적으로 heroku에 배포
+#### 2013년 8월 26일, hschoi 브랜치에 추가된 내용 => 배포 시물레이션 목적으로 heroku에 배포
 
-* Heroku에 배포하기 위해서는 Gemfile에 아래의 젬을 추가해야만 합니다. 
+###### Heroku에 배포하기 위해서 작업한 내용을 요약해 둡니다.
+
+* Gemfile에 아래의 젬을 추가 합니다. 
 
 ```
-group :proudction do
+group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
 ```
 
-* CLI에서 아래와 같이 heroku에 웹서버를 생성하고 git 저장소까지 동시에 만들었습니다. 
+그리고, bundle install 합니다.  
+
+* config/environments/production.rb 파일을 열어 아래와 같이 수정해 줍니다. 
 
 ```
-$ heroku create
-Creating rocky-river-7728... done, stack is cedar
-http://rocky-river-7728.herokuapp.com/ | git@heroku.com:rocky-river-7728.git
+config.serve_static_assets = true
 ```
 
-* git config 파일을 열어 remote 저장소에 heroku를 추가해 주었습니다. 
+
+* 다음으로는 assets을 사전 컴파일작업합니다. 
 
 ```
-$ git config -e
-
-[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = false
-  logallrefupdates = true
-  ignorecase = true
-  precomposeunicode = false
-[branch "master"]
-[remote "origin"]
-  url = git@github.com:bigpie/vsns.git
-  fetch = +refs/heads/*:refs/remotes/origin/*
-[remote "heroku"]
-  url = git@heroku.com:rocky-river-7728.git
-  fetch = +refs/heads/*:refs/remotes/heroku/*
+$ RAILS_ENV=production rake assets:precompile
 ```
 
+지금까지 작업한 내용을 git 저장소에 commit 합니다
+
+##### 이제부터는 heroku에 실제로 배포하기 위한 단계입니다. 
+
+* `cd vsns/bigpie` 로 이동한 다음에 `git init` 명령으로 `bigpie` 디렉토리에 대한 `git` 환경을 초기화 줍니다. 
+
+```
+vsns/bigpie $ git init
+vsns/bigpie $ git add .
+vsns/bigpie $ git commit -m 'initial commit for heroku deployment'
+```
+
+* CLI에서 아래와 같은 명령을 실행하여, heroku에 웹서버와 git 저장소를 동시에 생성합니다. 
+
+```
+vsns/bigpie $ heroku create
+Creating vast-crag-4195... done, stack is cedar
+http://vast-crag-4195.herokuapp.com/ | git@heroku.com:vast-crag-4195.git
+```
+
+* 이제 heroku 라는 원격 저장소를 등록해 줍니다. 
+
+```
+vsns/bigpie $ git remote add heroku git@heroku.com:vast-crag-4195.git
+```
+
+* 다음으로 heroku master 브랜치로 현재의 로컬 저장소의 브랜치를 git push 합니다. 
+
+```
+vsns/bigpie $ git push heroku master
+```
+
+heroku로 배포가 완료되면 아래와 같이 migration 작업을 합니다. 
+
+```
+vsns/bigpie $ heroku run rake db:schema:dump
+```
+
+이제 브라우저의 주소입력창에 `http://vast-crag-4195.herokuapp.com/` 을 입력하고 접속합니다. 지금까지의 설치과정에서 별문제가 없었다면 웹페이지가 제대로 보여야 합니다. 
 
 
 #### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => 본인의 계정정보를 수정할 수 있게 함.
