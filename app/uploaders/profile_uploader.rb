@@ -17,7 +17,7 @@ class ProfileUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-      assets_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+      asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
       # "/images/fallback/" + [version_name, "default_profile.png"].compact.join('_')
   end
 
