@@ -15,12 +15,11 @@
 # gem 'pg'
 #
 development:
-  host: rocky-river-7728.herokuapp.com
   adapter: postgresql
   encoding: unicode
   database: big_pie_development
   pool: 5
-  username: rorlab
+  username: hyo
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -53,12 +52,11 @@ test:
   password:
 
 production:
-  host: rocky-river-7728.herokuapp.com
   adapter: postgresql
   encoding: unicode
   database: big_pie_production
   pool: 5
-  username: rorlab
+  username: hyo
   password:
 
 
