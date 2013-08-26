@@ -60,7 +60,7 @@ group :development do
   gem 'meta_request'
 end
 
-group :proudction do
+group :production do
   gem 'rails_12factor'
 end
 
