@@ -1,9 +1,9 @@
 <div class="my_item">
-  <%= link_to " ", item_path(item), class: 'linkable_div' %>
   <div class='thumb'><%= image_tag item.photo_url(:thumb) %></div>
   <div>
     Posted: <%= time_ago_in_words(item.created_at) %><br />
     Tags:<%= raw item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br />
     Likes: <%= item.likers.size %>
   </div>
+  <div><%= link_to " ", item_path(item), class: 'linkable_div' %></div>
 </div>

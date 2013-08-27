@@ -3,6 +3,30 @@ vsns
 
 : vertical sns with big pie team
 
+## 로컬 개발모드 셋팅완료 !!!
+: as of 2013년 8월 28일, 7:00am 
+
+* 이 시간 이후에는 if Rails.env == 'development' 인 경우, 디폴트 개발모드 DB는 sqlite3로, carrierwave 저장소는 로컬 파일시스템입니다. 
+
+* 로컬에서도 production 모드를 돌려 볼 수 있는데, 이 때는 두군데를 코멘트 처리하거나 변경해 주면 됩니다. 
+  1. config/initializer/carrierwave.rb 파일 중에서 2-13 라인을 주석처리해 주시면 됩니다.
+  2. app/uploaders 디렉토리에 있는 각 파일들을 열어서(현재 2개의 업로더가 있습니다), storage :file 으로 변경해 주시고 if 조건절은 코멘터 처리해 주면 됩니다. 최종적으로는 아래와 같이 됩니다. 
+
+  ```
+  # Choose what kind of storage to use for this uploader:
+  storage :file
+  # storage :fog
+  #if Rails.env == 'production'
+  #  storage :aws
+  #else
+  #  storage :file
+  #end
+  ```
+
+* 그 동안 다른 멤버들의 고충 잘 알지 못한 점 죄송스럽게 생각합니다. 이제 로컬 개발환경에서도 팀프로젝트를 쉽게 셋팅해서 프로젝트 개발을 쉽게 할 수 있을 것을 생각합니다. 문제점이 발생하면 저에게 연락을 주시면 됩니다. rorlab@gmail.com  
+
+
+
 #### 2013년 8월 28일, hschoi 브랜치에 추가된 내용 
 
 * `pageless-rails` 젬을 추가했습니다. 이 젬은 `will_paginate` 젬을 이용하여 pagination을 구현한 상태에서 bottom-less 또는 endless pagination이 되도록 도와 주는 jquery plugin입니다. 
@@ -14,6 +38,13 @@ gem 'pageless'
 ```
 
 이미 `will_paginate` 젬은 설치되어 있으니 여기서는 추가할 필요가 없습니다. 이제 Gemfile을 저장후 bundle install 합니다. 
+
+in app/assets/javascripts/application.js, add the following code line.
+
+```
+//= require jquery.pageless
+  
+```
 
 in app/helpers/application_helper.rb 
 
@@ -28,7 +59,7 @@ def pageless(total_pages, url=nil, container=nil)
 
   container && opts[:container] ||= container
 
-  javascript_tag("$('#results').pageless(#{opts.to_json});")
+  javascript_tag("$('#items').pageless(#{opts.to_json});")
 end
 ```
 
@@ -37,12 +68,11 @@ end
 
 ```
 <div class="items"> 
-  <div id="results">
     <%= render @items %>
-  </div>
-  <%= will_paginate @items %>
-  <%= pageless(@items.total_pages, items_path, '#results') %>
 </div>
+<%= will_paginate @items %>
+<%= pageless(@items.total_pages, items_path, '#items') %>
+
 ```
 
 한편, items_controller.rb 파일의 index 액션에서는 @items 변수에 paginate 메소드를 호출해 줍니다.

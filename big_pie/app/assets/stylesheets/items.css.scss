@@ -82,13 +82,16 @@
   }
 }
 
-.my_posts {
+.my_posts_widget {
   border-bottom:1px solid #eaeaea;
   padding-top:0;
   .title {
     font-weight:bold;
     text-align: center;
     padding:.5em;
+  }
+  .my_posts {
+    text-align: center;
   }
 }
 .my_item {
