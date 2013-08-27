@@ -54,6 +54,8 @@ gem 'rmagick'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 gem 'will_paginate'
+# gem 'pageless-rails', path: '/Users/hyo/Projects/gemify/pageless-rails'
+gem 'pageless-rails', github: 'rorlab/pageless-rails'
 gem 'acts-as-taggable-on'
 
 group :development do

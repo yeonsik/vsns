@@ -3,6 +3,54 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 28일, hschoi 브랜치에 추가된 내용 
+
+* `pageless-rails` 젬을 추가했습니다. 이 젬은 `will_paginate` 젬을 이용하여 pagination을 구현한 상태에서 bottom-less 또는 endless pagination이 되도록 도와 주는 jquery plugin입니다. 
+
+in Gemfile,
+
+```
+gem 'pageless'
+```
+
+이미 `will_paginate` 젬은 설치되어 있으니 여기서는 추가할 필요가 없습니다. 이제 Gemfile을 저장후 bundle install 합니다. 
+
+in app/helpers/application_helper.rb 
+
+```
+def pageless(total_pages, url=nil, container=nil)
+  opts = {
+      :totalPages => total_pages,
+      :url        => url,
+      :loaderMsg  => 'Loading more pages...',
+      :loaderImage => image_path('load.gif')
+  }
+
+  container && opts[:container] ||= container
+
+  javascript_tag("$('#results').pageless(#{opts.to_json});")
+end
+```
+
+위와 같이 application 헬퍼 파일에 추가하면 erb 코딩에서 pageless 메소드를 편하게 사용할 수 있게 됩니다. 
+그리고 pageless pagination 을 원하는 view template 파일(views/items/index.html.erb)에서 아래와 같이 추가해 줍니다. 
+
+```
+<div class="items"> 
+  <div id="results">
+    <%= render @items %>
+  </div>
+  <%= will_paginate @items %>
+  <%= pageless(@items.total_pages, items_path, '#results') %>
+</div>
+```
+
+한편, items_controller.rb 파일의 index 액션에서는 @items 변수에 paginate 메소드를 호출해 줍니다.
+
+```
+@items = @items.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
+```
+
 #### 2013년 8월 27일, hschoi 브랜치에 추가된 내용 
 
 * 젬 추가 : slimbox2-rails v2.05.2 (https://github.com/rorlab/slimbox2-rails)
@@ -247,6 +295,10 @@ vsns/bigpie $ heroku run rake db:schema:dump
 ```
 
 이제 브라우저의 주소입력창에 `http://vast-crag-4195.herokuapp.com/` 을 입력하고 접속합니다. 지금까지의 설치과정에서 별문제가 없었다면 웹페이지가 제대로 보여야 합니다. 
+
+* My Posts 위젯을 오른쪽 sidebar에 thumbnail 형식으로 보여 주도록 했습니다. 
+* My Posts 위젯의 각 thumbnail을 마우스 오버하며 box shadow가 보이고 클릭하면 해당 item 정보로 이동합니다.
+
 
 
 #### 2013년 8월 25일(#4), hschoi 브랜치에 추가된 내용 => 본인의 계정정보를 수정할 수 있게 함.

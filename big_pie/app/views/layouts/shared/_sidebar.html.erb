@@ -29,6 +29,14 @@
     </div>
     <% end %>
   </div>
+  <div class='my_posts well'>
+    <div class='title'>
+      My Posts
+    </div>
+    <% current_user.items.each do | item | %>
+    <%= render 'items/my_item', item: item %>
+    <% end %>
+  </div>
 <% else %>
   <div class='user_profile well'>
     <div class="photo">

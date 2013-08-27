@@ -18,6 +18,13 @@ GIT
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
 
+GIT
+  remote: git://github.com/rorlab/pageless-rails.git
+  revision: 09274d4ed3db3018f765a27fb72dbe4b080912c8
+  specs:
+    pageless-rails (0.0.2)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -202,6 +209,7 @@ DEPENDENCIES
   jquery-turbolinks
   less-rails
   meta_request
+  pageless-rails!
   pg
   rails (= 4.0.0)
   rails_12factor
