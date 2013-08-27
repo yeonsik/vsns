@@ -42,6 +42,9 @@ gem 'less-rails'
 gem "twitter-bootstrap-rails"
 # gem 'flatui-rails'
 gem 'summernote-rails'
+gem 'slimbox2-rails'
+# gem 'slimbox2-rails', path: "/Users/hyo/Projects/gemify/slimbox2-rails"
+# gem 'lightbox2-rails', path: "/Users/hyo/Projects/gemify/lightbox2-rails"
 
 gem 'simple_form', github: 'plataformatec/simple_form', tag: 'v3.0.0.rc'
 
