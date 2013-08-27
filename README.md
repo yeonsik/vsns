@@ -3,7 +3,18 @@ vsns
 
 : vertical sns with big pie team
 
-#### 2013년 8월 26일, hschoi 브랜치에 추가된 내용
+#### 2013년 8월 27일, hschoi 브랜치에 추가된 내용 
+
+* 젬 추가 : slimbox2-rails v2.05.2 (https://github.com/rorlab/slimbox2-rails)
+* 이 젬은 이미지 파일을 lightbox 로 볼 수 있게 해 줍니다. 그리고 특정 페이지의 링크 중에 rel 속성이 'light-xxx' 와 같이 동일한 경우가 여러개 있는 경우에는 lightbox에서 좌우 화살표나 마우스 클릭으로 이미지 스크롤하여 볼 수 있습니다. v2.05.2에서는 이미지 원본이 스크린 크기보다 큰 경우 화면의 0.8 배 크기로 자동으로 줄여 보여 주어 더 좋아졌습니다. 
+* [주의] 레일스 4에서는 vendor/assets/images 디렉토리에 위치하는 이미지 파일들이 precompile되지 않는 문제점을 발견했습니다. 이를 위한 해결책은 config/production.rb 파일에 아래와 같이 코드를 추가해 줍니다. 즉, precompile 할 때 이미지 파일을 포함하라는 말인거죠.
+
+```
+# Precompile vendor/assets/images with Sprockets
+config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+```
+
+#### 2013년 8월 26일(#2), hschoi 브랜치에 추가된 내용
 
 ##### Carrierwave젬의 저장소로 aws 를 사용하기
 
@@ -62,7 +73,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-#### 2013년 8월 26일, hschoi 브랜치에 추가된 내용 => 배포 시물레이션 목적으로 heroku에 배포
+#### 2013년 8월 26일(#1), hschoi 브랜치에 추가된 내용 => 배포 시물레이션 목적으로 heroku에 배포
 
 ###### Heroku에 배포하기 위해서 작업한 내용을 요약해 둡니다.
 
@@ -131,7 +142,7 @@ vsns/bigpie $ heroku run rake db:schema:dump
 이제 브라우저의 주소입력창에 `http://vast-crag-4195.herokuapp.com/` 을 입력하고 접속합니다. 지금까지의 설치과정에서 별문제가 없었다면 웹페이지가 제대로 보여야 합니다. 
 
 
-#### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => 본인의 계정정보를 수정할 수 있게 함.
+#### 2013년 8월 25일(#4), hschoi 브랜치에 추가된 내용 => 본인의 계정정보를 수정할 수 있게 함.
 
 1. item form에 업로드된 photo 가 있는 경우 이미지를 표시하고 이미지를 삭제할 수 있는 checkbox를 추가하였습니다. 삭제 checkbox를 체크한 후 submit 하면 이제부터는 이미지가 삭제됩니다. 
 2. item index 페이지에서도 각 포스트마다 tag 리스트를 보이게 했습니다. 
@@ -141,7 +152,7 @@ vsns/bigpie $ heroku run rake db:schema:dump
 6. 또한 이메일 메뉴의 하위 메뉴를 두어 본인의 계정 정보를 수정할 수 있게 하였습니다. 
 7. will_paginate 젬 추가하였습니다. 
 
-#### 2013년 8월 25일, hschoi 브랜치에 추가된 내용 => Summernote 위지위크 에디터 추가함.
+#### 2013년 8월 25일(#3), hschoi 브랜치에 추가된 내용 => Summernote 위지위크 에디터 추가함.
 
 1. item form의 description 내용을 입력하는 창에 summernote 위지위그 에디터를 붙였습니다. 이를 위해 `summernote-rails` 라는 젬을 추가했습니다. 참고로 카카오의 홍영택님이 만드신 summernote 에디터를 rails에서 쉽게 사용할 수 있도록 제가 만든 젬입니다만, 시험적으로 사용해 봤습니다. 그런데로 괜찮습니다. 
 2. summernote-rails 젬을 사용하니 turbolinks와의 문제가 발생하여 페이지가 보여질 때 에디터가 보이지 않게 되어 juqery-turbolinks 라는 젬을 추가하여 해결하였습니다. 이에 대해서는 Gemfile에 코멘트 추가해 놓았습니다.
@@ -152,7 +163,7 @@ vsns/bigpie $ heroku run rake db:schema:dump
 7. items 보여지는 순서를 updated_at 날짜를 DESC로 지정했습니다. 이제 최근 갱신글이 가장 위로 보이게 됩니다. 
 
 
-#### 2013년 8월 25일, bbugguj 브랜치에 추가된 내용 => Tagging 기능 추가
+#### 2013년 8월 25일(#2), bbugguj 브랜치에 추가된 내용 => Tagging 기능 추가
 
 * gem 'acts-as-taggable-on'을 사용하여 Tagging 기능 추가
 * Item model에 tagging 관련 기능 추가 (acts_as_taggable)
@@ -162,7 +173,7 @@ vsns/bigpie $ heroku run rake db:schema:dump
 * ItemsController의 index에 tag로 검색하는 기능 추가
 * .gitignore 파일에  big_pie/public/uploads/* 추가
 
-#### 2013년 8월 25일, hschoi 브랜치에 추가된 내용
+#### 2013년 8월 25일(#1), hschoi 브랜치에 추가된 내용
 
 1. items 컨트롤러의 index와 show 액션 뷰 템플릿 파일을 리팩토링하였습니다. index view 에서는 _item.html.erb 이라는 partial template 파일을 만들어서 각 item 데이터를 보여 주는 부분을 별도의 파일로 추출하였습니다. 결과적으로 index.html.erb 파일에는 <%= render @items %> 이 한줄로 간단하게 전체 item 포스트를 보여 주게 됩니다. 
 2. show action view 에서는 _show_item.html.erb 이라는 partial template 파일을 새로 만들어서 하나의 item 데이터를 조금 이쁘게 보이도록 하였습니다. 물론 전체적으로는 responsive design을 유지하면서 말이죠. 따라서 show action view template 파일에는 <%= render 'show_item', item: @item %>와 같이 간단하게 리팩토링되는 것이죠. 

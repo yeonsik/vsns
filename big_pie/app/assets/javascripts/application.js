@@ -16,7 +16,9 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require slimbox2.min
 //= require twitter/bootstrap
 //= require summernote.min
+//= require items
 //= require_tree .
 //= require turbolinks

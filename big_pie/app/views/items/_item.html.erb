@@ -1,8 +1,8 @@
 <div class="item media">
-  <a class="pull-left" href="#">
-    <img class="media-object" data-src="holder.js/64x64">
-    <%= image_tag item.photo_url, size: '200' %>
-  </a>
+  <div class="pull-left">
+    <!-- <img class="media-object" data-src="holder.js/64x64"> -->
+    <%= link_to image_tag(item.photo_url(:gallery_image)), item.photo_url, rel: 'lightbox-photo', title: truncate(strip_tags(item.description), length: 100) %>
+  </div>
   <div class="media-body">
     <h4 class="media-heading"><%= link_to_unless (current_user == item.user), item.user.email, items_path(user_id: item.user_id) %></h4>
     <div class='description'>
