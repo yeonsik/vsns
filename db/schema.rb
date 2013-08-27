@@ -13,21 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20130827050006) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "items", force: true do |t|
     t.integer  "user_id"
     t.string   "photo"
     t.string   "url_ref"
-    t.text     "description"
-    t.integer  "starts_count", default: 0
+    t.text     "description",  limit: 255
+    t.integer  "starts_count",             default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "likes_count",  default: 0
+    t.integer  "likes_count",              default: 0
   end
 
-  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id"
 
   create_table "likes", force: true do |t|
     t.integer  "likeable_id"
@@ -37,8 +34,8 @@ ActiveRecord::Schema.define(version: 20130827050006) do
     t.datetime "updated_at"
   end
 
-  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -47,8 +44,8 @@ ActiveRecord::Schema.define(version: 20130827050006) do
     t.datetime "updated_at"
   end
 
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
-  add_index "relationships", ["following_id"], name: "index_relationships_on_following_id", using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["following_id"], name: "index_relationships_on_following_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -60,8 +57,8 @@ ActiveRecord::Schema.define(version: 20130827050006) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: true do |t|
     t.string "name"
@@ -84,7 +81,7 @@ ActiveRecord::Schema.define(version: 20130827050006) do
     t.string   "avatar"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
