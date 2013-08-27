@@ -1,0 +1,4 @@
+<%= item.likers.size %>
+<%= link_to_unless( current_user.liking?(item), "Like", like_item_path(current_user.id, item.id), class: 'dislike_state', remote: true) do %>
+  <%= link_to "Liked", dislike_item_path(current_user.id, item.id),  remote: true %>
+<% end if user_signed_in? %>

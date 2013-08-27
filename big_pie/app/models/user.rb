@@ -14,6 +14,25 @@ class User < ActiveRecord::Base
            dependent:   :destroy
   has_many :followings, through: :reverse_relationships, source: :following
 
+  has_many :likes, dependent: :destroy
+  has_many :like_items, class_name: "Item", through: :likes, source: :likeable, source_type: "Item"
+
+  def like!(item)
+    likes.create!( likeable: item)
+  end
+
+  def dislike!(item)
+    likes.find_by(likeable: item).destroy!
+  end
+
+  def liking?(item)
+    if item.nil?
+      false
+    else
+      likes.find_by(likeable: item).present?
+    end
+  end
+
   def following?(other_user)
     if other_user.nil?
       false

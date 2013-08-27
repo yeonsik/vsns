@@ -14,6 +14,113 @@ vsns
 config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 ```
 
+* likeable이라는 polymorphic association을 이용하여 좋아요 기능을 구현하였습니다. 이를 위해서 like.rb 모델 클래스를 작성하였고 이것은 모델 제너레이터를 이용하였습니다. 
+
+```
+$ rails g model Like likeable:references{polymorphic} user:references
+  invoke  active_record
+  create    db/migrate/20130827022256_create_likes.rb
+  create    app/models/like.rb
+  invoke    test_unit
+  create      test/models/like_test.rb
+  create      test/fixtures/likes.yml
+```
+
+이 `Like` 모델은 `User` 모델과 `Item` 모델을 연결하는 Join 모델로서 Like 모델은 어떤 모델(likeable:polymorphic)과도 `belongs_to` 로 연결할 수 있게 했습니다. 
+
+```
+class Like < ActiveRecord::Base
+  belongs_to :likeable, polymorphic: true, counter_cache: true
+  belongs_to :user
+end
+```
+또한 `items` 데이블에는 `likes_count:integer` 필드를 하나 추가합니다. 이것은 `counter_cache`에 사용하기 위한 필드로서 정수 `0`으로 초기화해 줍니다. 아래는 마이그레이션 클래스의 내용입니다. 
+
+```
+class AddLikesCountToItems < ActiveRecord::Migration
+  def change
+    add_column :items, :likes_count, :integer, default: 0
+  end
+end
+
+```
+User 모델 클래스에는 `like!`, `dislike!`, `liking?` 메소드를 추가했고, `users_controller.rb` 에는 `like`, `dislike` 액션을 추가해 주었습니다. 
+
+in user.rb
+
+```
+def like!(item)
+  likes.create!( likeable: item)
+end
+
+def dislike!(item)
+  likes.find_by(likeable: item).destroy!
+end
+
+def liking?(item)
+  if item.nil?
+    false
+  else
+    likes.find_by(likeable: item).present?
+  end
+end
+```
+
+in users_controller.rb
+
+```
+def like 
+  @user = User.find(params[:id])
+  @item = Item.find(params[:item_id])
+  @user.like! @item
+
+  respond_to do |format|
+    format.js
+  end
+
+end
+
+def dislike
+  @user = User.find(params[:id])
+  @item = Item.find(params[:item_id])
+  @user.dislike! @item
+
+  respond_to do |format|
+    format.js
+  end
+end
+```
+
+in routes.rb
+
+```
+get 'users/:id/like/:item_id' => 'users#like', as: :like_item
+get 'users/:id/dislike/:item_id' => 'users#dislike', as: :dislike_item
+```
+
+in views/users/like.js.erb
+
+```
+$('#like_<%= @item.id%>').html("<%=j render('items/like_status', item: @item) %>");
+```
+
+in views/users/dislike.js.erb
+
+```
+$('#like_<%= @item.id%>').html("<%=j render('items/like_status', item: @item) %>");
+```
+
+Like상태를 view 템플릿에 표시할 때는 아래와 같이 erb 코드를 작성했습니다. 
+
+```
+<%= item.likers.size %>
+<%= link_to_unless( current_user.liking?(item), "Like", like_item_path(current_user.id, item.id), class: 'dislike_state', remote: true) do %>
+  <%= link_to "Liked", dislike_item_path(current_user.id, item.id),  remote: true %>
+<% end if user_signed_in? %>
+```
+
+상세한 것은 소스를 보시기 바랍니다.
+
 #### 2013년 8월 26일(#2), hschoi 브랜치에 추가된 내용
 
 ##### Carrierwave젬의 저장소로 aws 를 사용하기
