@@ -72,3 +72,12 @@
   text-align: right;
   margin-bottom:2em;
 }
+
+.like {
+  a {
+    color:green;
+  }
+  a.dislike_state {
+    color:#999999;
+  }
+}
