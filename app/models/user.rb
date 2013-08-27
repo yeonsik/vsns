@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, ProfileUploader       
 
+  has_many :items, dependent: :destroy
+
   has_many :relationships, foreign_key: 'following_id', dependent: :destroy
   has_many :followers, through: :relationships, source: :follower
   has_many :reverse_relationships, foreign_key: 'follower_id',
