@@ -3,8 +3,18 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 28일(#), hschoi 브랜치에 추가된 내용 => 긴급 패치
+
+* ㅎㅎㅎ. 놀래셨죠? 다름이 아니라 pageless 구현했는데, 정작 필요한 views/items/index.js.erb 파일이 없군요. 추가해서 배포했습니다. 
+
+  in views/items/index.js.erb
+
+  ```
+  $("#items").html("<%= j render(@items) %>");
+  ```
+
 ## 로컬 개발모드 셋팅완료 !!!
-: as of 2013년 8월 28일, 7:00am 
+: as of 2013년 8월 28일, 7:00am (#2)
 
 * 이 시간 이후에는 if Rails.env == 'development' 인 경우, 디폴트 개발모드 DB는 sqlite3로, carrierwave 저장소는 로컬 파일시스템입니다. 
 
@@ -27,7 +37,7 @@ vsns
 
 
 
-#### 2013년 8월 28일, hschoi 브랜치에 추가된 내용 
+#### 2013년 8월 28일 (#1), hschoi 브랜치에 추가된 내용 
 
 * `pageless-rails` 젬을 추가했습니다. 이 젬은 `will_paginate` 젬을 이용하여 pagination을 구현한 상태에서 bottom-less 또는 endless pagination이 되도록 도와 주는 jquery plugin입니다. 
 
