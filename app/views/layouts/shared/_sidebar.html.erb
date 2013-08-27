@@ -29,13 +29,19 @@
     </div>
     <% end %>
   </div>
-  <div class='my_posts well'>
+  <div class='my_posts_widget well'>
     <div class='title'>
       My Posts
     </div>
-    <% current_user.items.each do | item | %>
-    <%= render 'items/my_item', item: item %>
-    <% end %>
+    <div class='my_posts'>
+      <% if current_user.items.size > 0 %>
+        <% current_user.items.each do | item | %>
+          <%= render 'items/my_item', item: item %>
+        <% end %>
+      <% else %>
+        <%= link_to 'You have not yet posts', new_item_path, class: 'not_yet_posts' %>
+      <% end %>
+    </div>
   </div>
 <% else %>
   <div class='user_profile well'>

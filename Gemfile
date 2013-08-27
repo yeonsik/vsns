@@ -6,8 +6,7 @@ ruby "2.0.0"
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,7 +26,9 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# To resolve turblink problems added by hschoi
+# Attention! added by hschoi
+# To resolve Turbolink problems, 
+# please reference http://blog.joshsoftware.com/2013/06/28/troubleshooting-turbolinks-with-rails-4/.
 gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -40,8 +41,11 @@ end
 
 gem 'less-rails'
 gem "twitter-bootstrap-rails"
+
+# commented out by hschoi due to incompatibility to summernote-rails
 # gem 'flatui-rails'
 gem 'summernote-rails'
+
 gem 'slimbox2-rails'
 
 gem 'simple_form', github: 'plataformatec/simple_form', tag: 'v3.0.0.rc'
@@ -54,7 +58,6 @@ gem 'rmagick'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 gem 'will_paginate'
-# gem 'pageless-rails', path: '/Users/hyo/Projects/gemify/pageless-rails'
 gem 'pageless-rails', github: 'rorlab/pageless-rails'
 gem 'acts-as-taggable-on'
 
@@ -65,6 +68,7 @@ group :development do
 end
 
 group :production do
+  gem 'pg'
   gem 'rails_12factor'
 end
 

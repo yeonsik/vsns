@@ -1,3 +1,4 @@
+# If you want to use your local file system as storage in production mode well, please comment out the following CarrierWave.configure
 CarrierWave.configure do |config|
   config.storage    = :aws
   config.aws_bucket = ENV['S3_BUCKET_NAME']
@@ -9,7 +10,9 @@ CarrierWave.configure do |config|
     access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
   }
-end
+end if Rails.env == 'production'
+# ===================================================
+
 
 
 # Allow non-ascii letters in uploaded filenames
