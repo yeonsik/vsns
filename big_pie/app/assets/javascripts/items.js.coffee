@@ -1,6 +1,6 @@
 $ ->
   $('.add_a_comment_link').on "click", ->
-    $(this).parent().next().show();
+    $(this).parent().next().slideToggle();
     false
 
   $('.thumbnail').tooltip

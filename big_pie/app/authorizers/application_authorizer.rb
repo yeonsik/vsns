@@ -18,4 +18,8 @@ class ApplicationAuthorizer < Authority::Authorizer
     resource.user == user || user.has_role?(:admin)
   end
 
+  def deletable_by?(user)
+    resource.user == user || user.has_role?(:admin)
+  end
+
 end

@@ -1,4 +1,15 @@
 <%= content_for :item_content do %>
+  <% if params[:user_id].present? %>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <span class="badge badge-important">Items of <% anyone = User.find(params[:user_id]) %>
+        <%= anyone.email %>
+        <small style='color:#00ff00;'><%= anyone.items.size %></small></span>
+
+      </div>
+    </div>
+  <% end %>
+
   <div class='row-fluid'>
     <div class='span9'>
     <%= yield %>

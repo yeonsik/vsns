@@ -19,3 +19,18 @@ form {
     padding-left:0;
   }
 }
+.carousel {
+  margin-bottom:0;
+  color:#999999;
+  .caption {
+    font-style:italic;
+    font-size:11px;
+  }
+  .item.active {
+    margin-bottom:0;
+  }
+  img { margin: 0 auto; margin-bottom:.3em;}
+}
+.carousel .carousel-control { visibility: hidden; }
+.carousel:hover .carousel-control { visibility: visible; }
+.carousel-indicators { display:none;}

@@ -3,6 +3,18 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 28일(#6), hschoi 브랜치에 추가된 내용
+
+* Comment가 하나 추가되면 해당 Item의 모델 객체의 updated_at 날짜가 갱신되어 페이지의 최상단에 보이게 됩니다. 
+
+  in app/models/comment.rb
+
+  ```
+  belongs_to :commentable, polymorphic: true, touch: true
+  ```
+
+  이를 위해서 touch: true 옵션을 주면 됩니다. 
+
 #### 2013년 8월 28일(#5), hschoi 브랜치에 추가된 내용 => 권한기능 추가
 
 * Gemfile에 authority & rolify 두개의 젬 추가하고 bundle install 합니다.
