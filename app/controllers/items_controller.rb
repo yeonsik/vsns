@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
     if params[:user_id]
       @other_user = User.find(params[:user_id])
       @items = @items.where( user_id: @other_user.id) 
+      @other_user = nil if current_user == @other_user
     end
     @items = @items.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
     if request.xhr?

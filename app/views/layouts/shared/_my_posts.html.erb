@@ -1,0 +1,31 @@
+<div class='title'>
+  My Items <small><%= current_user.items.size %></small>
+</div>
+<div class='my_posts'>
+  <% if current_user.items.size > 0 %>
+    <%#= render 'items/my_item', item: item %>
+    <div id="myItemsCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <% current_user.items.each_with_index do | item, index | %>
+        <li data-target="#myItemsCarousel" data-slide-to="<%=index%>" class="<%= 'active' if index == 0 %>"></li>
+        <% end %>
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner" style="padding-bottom:0;">
+        <% current_user.items.each_with_index do | item, index | %>
+          <div class="<%= 'active' if index == 0 %> item">
+            <%= link_to image_tag(item.photo_url(:thumb)), item_path(item) %>
+            <span class='caption'><%= time_ago_in_words item.created_at %> ago<br />
+            <%= truncate(strip_tags(item.description), length:20) %></span>
+          </div>
+        <% end %>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myItemsCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myItemsCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+  <% else %>
+    <%= link_to 'You have not yet posts', new_item_path, class: 'not_yet_posts' %>
+  <% end %>
+</div>
+

@@ -6,14 +6,17 @@
   <div class="media-body">
     <h4 class="media-heading"><%= link_to_unless (current_user == item.user), item.user.email, items_path(user_id: item.user_id) %></h4>
     <div class='description'>
-      <%=raw item.description %>
+      <%= truncate(strip_tags(item.description), length: 200) %>
     </div>
+    <% if item.tags.size > 0 %>
     <div class='tag_list' %>
-      Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+      <i class="icon-tag"></i> Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
     </div>
-    <div class='start_count' %>
+    <% end %>
+
+<!--     <div class='start_count' %>
       Start Count: <%= item.starts_count %>
-    </div>
+    </div> -->
 
     <div id='like_<%= item.id %>' class='like'>
       <%= render 'items/like_status', item: item %>
@@ -23,7 +26,7 @@
 
     <div class='actions'>
       <%= link_to 'Show', item_path(item), class:'btn' %>
-      <% if current_user.can_update? item %>
+      <% if user_signed_in? and current_user.can_update? item %>
         <%= link_to 'Edit', edit_item_path(item), class:'btn' %>
         <%= link_to 'Destroy', item, method: :delete, data:{confirm: 'Are you sure?'}, class:'btn' %>
       <% end %>

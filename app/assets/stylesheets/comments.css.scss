@@ -4,17 +4,22 @@
 
 .comments {
   padding-left:1em;
+  padding-right:.5em;
   margin-bottom:1em;
   margin-top:.5em;
 }
 .comment {
   background-color: #f7f7f7;
-  margin-bottom:.3em;
-  padding:.3em .5em;
+  margin-bottom:.5em;
+  padding:.3em .8em;
+  font-size:12px;
   .info {
-    font-size:12px;
+    font-size:11px;
     text-align: right;
     color:#999999;
     font-style: italic;
   }
+  &:hover {
+    box-shadow: 0 0 5px #999999;
+  };
 }
