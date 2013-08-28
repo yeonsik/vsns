@@ -1,0 +1,19 @@
+.comment_form_of_item {
+  display:none;
+}
+
+.comments {
+  padding-left:1em;
+  margin-bottom:1em;
+  margin-top:.5em;
+}
+.comment {
+  background-color: #e6e6e6;
+  margin-bottom:.3em;
+  padding:.3em;
+  .info {
+    text-align: right;
+    color:#999999;
+    font-style: italic;
+  }
+}

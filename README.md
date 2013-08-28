@@ -3,7 +3,76 @@ vsns
 
 : vertical sns with big pie team
 
-#### 2013년 8월 28일(#), hschoi 브랜치에 추가된 내용 => 긴급 패치
+#### 2013년 8월 28일(#4), hschoi 브랜치에 추가된 내용 => 댓글기능 추가
+
+* Comment 모델의 생성. 이 모델도 polymorphic association으로 어떠한 모델에도 붙일 수 있도록 하였습니다. 
+
+  ```
+  $ rails g model comment user:references commentable:references{polymorphic} body:text
+        invoke  active_record
+        create    db/migrate/20130827234430_create_comments.rb
+        create    app/models/comment.rb
+        invoke    test_unit
+        create      test/models/comment_test.rb
+        create      test/fixtures/comments.yml
+  $ rake db:migrate
+  ==  CreateComments: migrating =================================================
+  -- create_table(:comments)
+     -> 0.0101s
+  ==  CreateComments: migrated (0.0101s) ========================================
+  ```
+
+ * [주의] simple_form 젬 설치한 다음에 $ rails g simple_form:install --bootstrap 명령을 수행하였는지 모르겠네요. simple_form의 class를 `form-vertial`로 변경해야 할 필요가 있지만, 적용이 되지 않는군요. 그래서 다시 $ rails g simple_form:install --bootstrap 명령으로 덥어쓰기 했습니다. 이제 default가 `form-vertical` 되었습니다. 그래서 추가 작업은 views/devise/ 디렉토리 아래의 registraion과 session 디렉토리에 있는 simple_form의 class를 `form-horizontal`로 변경해 주어야 합니다. 그리고 comment 폼에서는 별도의 class를 지정할 필요가 없게 되었습니다. 
+
+ * Comment 모델을 만들었으니 컨트롤러와 뷰 템플릿을 만들어야 합니다. 
+
+   in app/controllers/comments_controller.rb
+
+   ```
+   class CommentsController < ApplicationController
+     
+     def create
+       @commentable = comment_params[:commentable_type].classify.constantize.send('find',comment_params[:commentable_id])
+       comment_params[:user_id] = current_user.id
+       flash[:notice] = "A comment was successfully created."
+       respond_to do |format|
+         if @comment = @commentable.comments.create(comment_params)
+           format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+           format.json { render json: @comment, status: :created, location: @comment }
+           format.js
+         else
+           format.html { render action: "new" }
+           format.json
+         end
+       end
+     end
+
+     def destroy
+       comment = Comment.find(params[:id])
+       @commentable = comment.commentable_type.classify.constantize.send('find', comment.commentable_id)
+       @comment = @commentable.comments.find(params[:id])
+       @comment.destroy
+       flash[:alert] = "A comment was successfully deleted."
+       respond_to do |format|
+         format.html { redirect_to items_url, alert: 'Comment was successfully deleted.' }
+         format.json { head :ok }
+         format.js
+       end
+     end
+
+     private
+
+     def comment_params
+       params.require(:comment).permit(:body, :user_id, :commentable_id, :commentable_type)
+     end
+   end
+   ```
+
+ * 여기서는 정신을 똑바로 차려야 합니다. polymorphic 관계로 comment 객체들을 다루어야 하기 때문입니다. 위의 코드 중에는 생소한 것들이 보입니다. classify니 constantize니 하는 것들이죠. commentable_type으로 넘어오는 값은 클래스가 아니라 그저 문제에 불과합니다. 그러나 우리는 실제 클래스가 필요하기 때문에 넘겨 받은 문자열을 가지고 클래스를 만들어서(classify), 상수화(constantize)하는 과정을 거쳐야 합니다. 이렇게 만들어진 클래스 상수에 대해서 send 메소드를 호출하여 finder 메소드를 인수로 넘겨 주면 runtime에서 문자열을 가지고 실제 클래스의 메소드를 실행할 수 있게 되는 것입니다. 조금 어렵죠? ㅎㅎㅎ.
+
+ * 나머지 comment에 대한 뷰 템블릿을 만든 것은 별도의 설명이 필요없을 것 같습니다. 
+
+#### 2013년 8월 28일(#3), hschoi 브랜치에 추가된 내용 => 긴급 패치
 
 * ㅎㅎㅎ. 놀래셨죠? 다름이 아니라 pageless 구현했는데, 정작 필요한 views/items/index.js.erb 파일이 없군요. 추가해서 배포했습니다. 
 

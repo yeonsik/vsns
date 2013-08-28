@@ -14,11 +14,12 @@
     <div class='start_count' %>
       Start Count: <%= item.starts_count %>
     </div>
-    
 
     <div id='like_<%= item.id %>' class='like'>
       <%= render 'items/like_status', item: item %>
     </div>
+    
+    <%= render "comments", item: item %>
 
     <div class='actions'>
       <%= link_to 'Show', item_path(item), class:'btn' %>
