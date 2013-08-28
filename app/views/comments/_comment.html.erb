@@ -5,8 +5,8 @@
   <div class='info'>
     <%= comment.user.email %>
     <%= time_ago_in_words(comment.created_at) %>
-    <%= link_to raw("&times;"), polymorphic_url([comment.commentable, comment]), data:{:confirm => 'Are you sure?'}, :method => :delete,
-      :remote => true  %>
+    <%= link_to(raw("&times;"), polymorphic_url([comment.commentable, comment]), data:{:confirm => 'Are you sure?'}, :method => :delete,
+          :remote => true) if current_user.can_update? comment  %>
   </div>
 
 </div>

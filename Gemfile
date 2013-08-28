@@ -53,6 +53,8 @@ gem 'carrierwave-aws'  # added by hschoi
 gem 'rmagick'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'authority'
+gem 'rolify'
 
 gem 'will_paginate'
 gem 'pageless-rails', github: 'rorlab/pageless-rails'

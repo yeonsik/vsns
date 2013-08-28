@@ -1,4 +1,9 @@
 class Item < ActiveRecord::Base
+  
+  # Adds `creatable_by?(user)`, etc
+  include Authority::Abilities
+  resourcify
+
   acts_as_taggable  
   belongs_to :user
   mount_uploader :photo, PhotoUploader

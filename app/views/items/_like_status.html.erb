@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <%= item.likers.size %>
   <%= link_to_unless( current_user.liking?(item), "Like", like_item_path(current_user.id, item.id), class: 'dislike_state', remote: true) do %>
-  <%= link_to "Liked", dislike_item_path(current_user.id, item.id),  remote: true %>
+  <%= link_to "Liked", dislike_item_path(current_user.id, item.id), rel: 'tooltip', title: list_of_likers(item), data:{container: "body"}, remote: true %>
   <% end %>
 <% else %>
   <%= pluralize item.likers.size, "Like" %>

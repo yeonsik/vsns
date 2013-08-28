@@ -15,7 +15,7 @@ $ ->
     # to set options
     height:300  
     toolbar: [
-                # ['insert', ['picture', 'link']], // no insert buttons
+                ['insert', ['link']],
                 ["table", ["table"]], 
                 ["style", ["style"]], 
                 ["fontsize", ["fontsize"]], 

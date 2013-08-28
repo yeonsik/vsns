@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    authorize_action_for(@item)
   end
 
   # POST /items
@@ -57,6 +58,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
+      authorize_action_for(@item) 
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
@@ -70,6 +72,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    authorize_action_for(@item) 
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url }

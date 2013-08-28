@@ -18,8 +18,10 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
+    authorize_action_for(@comment) 
     @commentable = comment.commentable_type.classify.constantize.send('find', comment.commentable_id)
     @comment = @commentable.comments.find(params[:id])
+    authorize_action_for(@comment) 
     @comment.destroy
     flash[:alert] = "A comment was successfully deleted."
     respond_to do |format|
