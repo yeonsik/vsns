@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
            dependent:   :destroy
   has_many :followings, through: :reverse_relationships, source: :following
 
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_items, class_name: "Item", through: :likes, source: :likeable, source_type: "Item"
 

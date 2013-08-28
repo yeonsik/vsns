@@ -14,11 +14,25 @@
     <div class='start_count' %>
       Start Count: <%= item.starts_count %>
     </div>
-    
 
     <div id='like_<%= item.id %>' class='like'>
       <%= render 'items/like_status', item: item %>
     </div>
+    
+    <% if user_signed_in? %>
+    <div class="comments_container">
+      <div>Comments: <small id='count_of_comments_of_Item_<%= item.id %>'>
+        <%= item.comments.size %></small>
+      </div> 
+      <div id='comments_of_Item_<%= item.id %>' class='comments'>
+        <%= render item.comments %>
+      </div>
+      <div><%= link_to "Add a comment", '#', class:'add_a_comment_link' %></div>
+      <div id='comment_form_of_Item_<%= item.id %>' class='comment_form_of_item'>
+        <%= render 'comments/form', commentable: item %>
+      </div>
+    </div>
+    <% end %>
 
     <div class='actions'>
       <%= link_to 'Show', item_path(item), class:'btn' %>

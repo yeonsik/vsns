@@ -7,6 +7,8 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :photo, :description, if: :check_remote_photo_url
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes,  source: :user
 

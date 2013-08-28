@@ -1,4 +1,8 @@
 $ ->
+  $('.add_a_comment_link').on "click", ->
+    $(this).parent().next().show();
+    false
+
   $('.thumbnail').tooltip
     placement: 'bottom'
 

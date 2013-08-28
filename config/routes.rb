@@ -9,7 +9,9 @@ BigPie::Application.routes.draw do
   get 'users/:id/unfollow/:other_id' => 'users#unfollow', as: :unfollow_user
   get 'tags/:tag', to: 'items#index', as: :tag
   resources :relationships, only: [:create, :destroy]
-  resources :items
+  resources :items do
+    resources :comments
+  end
   devise_for :users
   resources :users do
     member do

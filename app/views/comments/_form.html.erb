@@ -1,0 +1,8 @@
+<%= simple_form_for( [commentable, commentable.comments.build(:user_id => current_user.id)], :remote => true) do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :commentable_id %>
+  <%= f.hidden_field :commentable_type %>
+  <%= f.input :body, label: false, input_html:{class:'span12', rows: 4} %>
+
+  <%= f.button :submit%>
+<% end %>  
