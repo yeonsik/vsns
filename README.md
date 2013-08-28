@@ -3,24 +3,48 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 28일(#5), hschoi 브랜치에 추가된 내용 => 권한기능 추가
+
+* Gemfile에 authority & rolify 두개의 젬 추가하고 bundle install 합니다.
+* 준비 작업을 아래와 같이 합니다.  
+  
+  ```
+  # Create the ApplicationAuthorizer from Authority 
+  $ rails generate authority:install
+
+  # Create the Role class from rolify
+  $ rails generate rolify:role
+
+  # Create related tables
+  $ rake db:migrate
+  ```
+
+* 권한설정하는 방법에 대해서는 아래의 자료를 참조하기 바랍니다. 
+  * Devise + Authority + Rolify 
+    : https://github.com/EppO/rolify/wiki/Using-rolify-with-Devise-and-Authority
+
+* 이제 부터는 본인이 작성한 글이나 댓글에 대해서만 권한이 주어집니다. 다른 사람의 글이나 댓글은 수정하거나 삭제할 수 없습니다 
+  
 #### 2013년 8월 28일(#4), hschoi 브랜치에 추가된 내용 => 댓글기능 추가
 
-* Comment 모델의 생성. 이 모델도 polymorphic association으로 어떠한 모델에도 붙일 수 있도록 하였습니다. 
+ * Comment 모델의 생성. 이 모델도 polymorphic association으로 어떠한 모델에도 붙일 수 있도록 하였습니다. 
 
-  ```
-  $ rails g model comment user:references commentable:references{polymorphic} body:text
-        invoke  active_record
-        create    db/migrate/20130827234430_create_comments.rb
-        create    app/models/comment.rb
-        invoke    test_unit
-        create      test/models/comment_test.rb
-        create      test/fixtures/comments.yml
-  $ rake db:migrate
-  ==  CreateComments: migrating =================================================
-  -- create_table(:comments)
+
+   ```
+    $ rails g model comment user:references commentable:references{polymorphic} body:text
+    invoke  active_record
+    create    db/migrate/20130827234430_create_comments.rb
+    create    app/models/comment.rb
+    invoke    test_unit
+    create      test/models/comment_test.rb
+    create      test/fixtures/comments.yml
+
+    $ rake db:migrate
+    ==  CreateComments: migrating =================================================
+    -- create_table(:comments)
      -> 0.0101s
-  ==  CreateComments: migrated (0.0101s) ========================================
-  ```
+    ==  CreateComments: migrated (0.0101s) ========================================
+   ```
 
  * [주의] simple_form 젬 설치한 다음에 $ rails g simple_form:install --bootstrap 명령을 수행하였는지 모르겠네요. simple_form의 class를 `form-vertial`로 변경해야 할 필요가 있지만, 적용이 되지 않는군요. 그래서 다시 $ rails g simple_form:install --bootstrap 명령으로 덥어쓰기 했습니다. 이제 default가 `form-vertical` 되었습니다. 그래서 추가 작업은 views/devise/ 디렉토리 아래의 registraion과 session 디렉토리에 있는 simple_form의 class를 `form-horizontal`로 변경해 주어야 합니다. 그리고 comment 폼에서는 별도의 class를 지정할 필요가 없게 되었습니다. 
 

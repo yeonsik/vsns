@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   # Devise with strong parameters
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  # Send 'em back where they came from with a slap on the wrist
+  def authority_forbidden(error)
+    Authority.logger.warn(error.message)
+    redirect_to request.referrer.presence || root_path, :alert => 'You are not authorized to complete that action.'
+  end
+
   protected
 
   def configure_permitted_parameters

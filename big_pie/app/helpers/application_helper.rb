@@ -13,4 +13,14 @@ module ApplicationHelper
     javascript_tag("$('#items').pageless(#{opts.to_json});")
   end
 
+  def list_of_likers(item)
+    users = item.likers
+    users_count = users.size
+    emails_return = users[0..9].map(&:email).join('<br />')
+    if users_count > 11
+      emails_return += "<br />#{(users_count - 10)} more..."
+    end
+    emails_return
+  end
+
 end
