@@ -1,0 +1,13 @@
+<i class="icon-thumbs-up-alt"></i>
+<% if user_signed_in? %>
+  <% if likeable.likers.size > 0 %>
+    <a rel='tooltip' title="<%= list_of_likers(likeable)%>", data-container="body"><%= likeable.likers.size %></a>
+  <% else %>
+    <span><%= likeable.likers.size %></span>
+  <% end %>
+  <%= link_to_unless( current_user.liking?(likeable), "Like", like_likeable_path(current_user.id, likeable.class.name, likeable.id), class: 'dislike_state', remote: true) do %>
+  <%= link_to "Liked", dislike_likeable_path(current_user.id, likeable.class.name, likeable.id), remote: true -%>
+  <% end %>
+<% else %>
+  <%= pluralize likeable.likers.size, "Like" %>
+<% end %>

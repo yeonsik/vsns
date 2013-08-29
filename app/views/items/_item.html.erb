@@ -14,14 +14,18 @@
     </div>
     <% end %>
 
-<!--     <div class='start_count' %>
+    <!--     
+      <div class='start_count' %>
       Start Count: <%= item.starts_count %>
-    </div> -->
+    </div> 
+    -->
 
+    <!-- Like link to a comment  -->
     <div id='like_<%= item.id %>' class='like'>
-      <%= render 'items/like_status', item: item %>
+      <%= render 'layouts/shared/like_status', likeable: item %>
     </div>
     
+    <!-- list of comments -->
     <%= render "comments", item: item %>
 
     <div class='actions'>

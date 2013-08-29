@@ -1,7 +1,12 @@
 $ ->
-  $('.add_a_comment_link').on "click", ->
-    $(this).parent().next().slideToggle();
+
+  $('.add_a_comment_link').bind "click", ->
+    $(this).parent().parent().next().next().slideToggle()
     false
+
+  $('.show_comments_link').bind "click", ->
+    if $(this).hasClass('enabled')
+      $(this).next().slideToggle()  
 
   $('.thumbnail').tooltip
     placement: 'bottom'

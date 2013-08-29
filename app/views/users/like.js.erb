@@ -1,2 +1,2 @@
-$('#like_<%= @item.id%>').html("<%=j render('items/like_status', item: @item) %>");
+$('#like_<%= @likeable.id%>').html("<%=j render('layouts/shared/like_status', likeable: @likeable) %>");
 $("a[rel~=tooltip], .has-tooltip").tooltip({html: true})

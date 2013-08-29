@@ -1,5 +1,10 @@
 <div id="items"> 
-  <%= render @items %>
+  <%#= render @items %>
+  <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+    <% @items.each do | item | %>
+      <%= render 'items/item1', item: item %>
+    <% end %>
+  </div>
 </div>
 <%= will_paginate @items %>
 <%= pageless(@items.total_pages, items_path, '#items') %>
