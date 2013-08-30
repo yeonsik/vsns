@@ -19,6 +19,7 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -45,6 +46,8 @@ gem 'summernote-rails'
 
 gem 'slimbox2-rails'
 
+# gem 'masonry-rails'
+
 gem 'simple_form', github: 'plataformatec/simple_form', tag: 'v3.0.0.rc'
 
 # gem 'carrierwave'
@@ -58,7 +61,10 @@ gem 'rolify'
 
 gem 'will_paginate'
 gem 'pageless-rails', github: 'rorlab/pageless-rails'
+
 gem 'acts-as-taggable-on'
+# Replace gem 'tagsinput-rails' with the following one for Bootstrap
+gem 'bootstrap-tagsinput-rails'
 
 group :development do
 
