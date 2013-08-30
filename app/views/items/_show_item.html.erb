@@ -12,7 +12,7 @@
     <i class="icon-tag"></i> Tags: <%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
   </div>
   <div id='like_<%= item.id %>' class='like start_count'>
-    <%= render 'layouts/shared/like_status', likeable: item %>
+    <%= render 'items/like_status', item: item %>
   </div>
 
       <%= render "comments", item: item %>

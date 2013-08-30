@@ -3,10 +3,6 @@
     <%= comment.body %>
   </div>
   <div class='info'>
-    <span id='like_<%= comment.id %>' class='like'>
-      <%= render 'layouts/shared/like_status', likeable: comment %>
-    </span>,
-
     <%= comment.user.email %>
     <%= time_ago_in_words(comment.created_at) %>
     <%= link_to(raw("<i class='icon-trash'></i>"), polymorphic_url([comment.commentable, comment]), data:{:confirm => 'Are you sure?'}, :method => :delete,

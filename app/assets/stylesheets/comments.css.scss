@@ -1,35 +1,25 @@
-.comments_container {
-  .show_comments_link {
-    cursor: pointer;
-  }
-  // border:1px solid red;
-  .add_a_comment_link {
-    margin-left:1em !important;
-  }
-  .comments {
-    padding: .5em .5em .1em 1em;
-    margin-top:0;
-    display:none;
-    .comment {
-      background-color: #f7f7f7;
-      margin-bottom:.5em;
-      padding:.3em .8em;
-      font-size:12px;
-      .info {
-        font-size:11px;
-        text-align: right;
-        color:#999999;
-        font-style: italic;
-      }
-      &:hover {
-        box-shadow: 0 0 5px #999999;
-      };
-    }
-  }
-}
 .comment_form_of_item {
   display:none;
 }
-#new_comment {
-  // margin-top:0 !important;
+
+.comments {
+  padding-left:1em;
+  padding-right:.5em;
+  margin-bottom:1em;
+  margin-top:.5em;
+}
+.comment {
+  background-color: #f7f7f7;
+  margin-bottom:.5em;
+  padding:.3em .8em;
+  font-size:12px;
+  .info {
+    font-size:11px;
+    text-align: right;
+    color:#999999;
+    font-style: italic;
+  }
+  &:hover {
+    box-shadow: 0 0 5px #999999;
+  };
 }

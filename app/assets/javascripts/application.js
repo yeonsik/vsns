@@ -16,11 +16,10 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery.ui.all
 //= require slimbox2.min
 //= require jquery.pageless
 //= require twitter/bootstrap
 //= require summernote.min
-//= require bootstrap-tagsinput
+//= require items
 //= require_tree .
 //= require turbolinks

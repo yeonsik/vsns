@@ -16,7 +16,7 @@
           <div class="<%= 'active' if index == 0 %> item">
             <%= link_to image_tag(item.photo_url(:thumb)), item_path(item) %>
             <span class='caption'><%= time_ago_in_words item.created_at %> ago<br />
-            <%= truncate(strip_tags(item.description).gsub("&nbsp;",' ').gsub("&lt;", "<").gsub('&gt;', '>'), length: 20) %></span>
+            <%= truncate(strip_tags(item.description), length:20) %></span>
           </div>
         <% end %>
       </div>

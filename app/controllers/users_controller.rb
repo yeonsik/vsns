@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def like 
     @user = User.find(params[:id])
-    @likeable = params[:likeable_type].classify.constantize.send('find', params[:likeable_id])
-    @user.like! @likeable
+    @item = Item.find(params[:item_id])
+    @user.like! @item
 
     respond_to do |format|
       format.js
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
 
   def dislike
     @user = User.find(params[:id])
-    @likeable = params[:likeable_type].classify.constantize.send('find', params[:likeable_id])
-    @user.dislike! @likeable
+    @item = Item.find(params[:item_id])
+    @user.dislike! @item
 
     respond_to do |format|
       format.js
