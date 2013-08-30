@@ -3,7 +3,10 @@ vsns
 
 : vertical sns with big pie team
 
-#### 2013년 8월 30일, hschoi 브랜치에 추가된 내용
+
+#### 2013년 8월 30일 (#2), hschoi branch에서 dkim branch를 생성함. 
+
+#### 2013년 8월 30일 (#1), hschoi 브랜치에 추가된 내용
 
 * 변용훈님이 `tagsinput-rails` 젬을 이용하여 코딩해 주신 부분을 `bootstrap-tagsinput-rails` 젬으로 대치하여 변경하였습니다. 현재 프로젝트에서는 `Twitter Bootstrap`을 사용하고 있어서 스타일링이 어울리 않더군요. 그것 말고는 잘 동작합니다. 
 
