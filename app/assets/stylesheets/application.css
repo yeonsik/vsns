@@ -9,8 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.all
  *= require slimbox2
  *= require bootstrap_and_overrides
  *= require summernote
+ *= require bootstrap-tagsinput
  *= require_tree .
  */
