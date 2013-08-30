@@ -8,6 +8,10 @@ BigPie::Application.routes.draw do
   get 'users/:id/follow/:other_id' => 'users#follow', as: :follow_user
   get 'users/:id/unfollow/:other_id' => 'users#unfollow', as: :unfollow_user
   get 'tags/:tag', to: 'items#index', as: :tag
+
+  get 'communities/:community_id', to: 'items#index', as: :community
+  post 'communities/:community_id/join' => 'communities#join'
+  resources :communities, only: [:create]
   resources :relationships, only: [:create, :destroy]
   resources :items do
     resources :comments

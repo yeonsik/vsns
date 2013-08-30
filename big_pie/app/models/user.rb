@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :like_items, class_name: "Item", through: :likes, source: :likeable, source_type: "Item"
 
+  has_many :associates
+  has_many :communities, :through => :associates
+
+
   def like!(item)
     likes.create!( likeable: item)
   end
