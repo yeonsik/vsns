@@ -61,7 +61,10 @@ gem 'rolify'
 
 gem 'will_paginate'
 gem 'pageless-rails', github: 'rorlab/pageless-rails'
+
 gem 'acts-as-taggable-on'
+# Replace gem 'tagsinput-rails' with the following one for Bootstrap
+gem 'bootstrap-tagsinput-rails'
 
 group :development do
 

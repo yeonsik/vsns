@@ -21,5 +21,6 @@
 //= require jquery.pageless
 //= require twitter/bootstrap
 //= require summernote.min
+//= require bootstrap-tagsinput
 //= require_tree .
 //= require turbolinks
