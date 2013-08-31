@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
       @other_user = nil if current_user == @other_user
     end
     @items = @items.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
-    # @communities = Community.all
+    
     if request.xhr?
       sleep(1)
       render @items
@@ -31,19 +31,18 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    # @communities = Community.all
+    
   end
 
   # GET /items/new
   def new
-    @item = Item.new
-    # @communities = Community.all
+    @item = Item.new    
   end
 
   # GET /items/1/edit
   def edit
     authorize_action_for(@item)
-    # @communities = Community.all
+    
   end
 
   # POST /items
