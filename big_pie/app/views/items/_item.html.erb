@@ -7,6 +7,8 @@
     <h4 class="media-heading"><%= link_to_unless (current_user == item.user), item.user.email, items_path(user_id: item.user_id) %></h4>
     <div class='description'>
       <%= truncate(strip_tags(item.description).gsub("&nbsp;",' ').gsub("&lt;", "<").gsub('&gt;', '>'), length: 200) %>
+      <%= raw CodeRay.scan(item.description.html_safe, :ruby).div(:line_numbers => :table) %>
+
     </div>
     <% if item.tags.size > 0 %>
     <div class='tag_list' %>

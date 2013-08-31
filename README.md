@@ -3,6 +3,8 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 8월 31일 add CodeRay for Syntax Highlight
+
 #### 2013년 8월 30일 (#3) dkim push test
 
 #### 2013년 8월 30일 (#2), hschoi branch에서 dkim branch를 생성함. 
