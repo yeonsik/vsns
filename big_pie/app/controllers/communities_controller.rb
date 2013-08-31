@@ -15,11 +15,11 @@ class CommunitiesController < ApplicationController
   	@community = Community.new(community_params)
 	associate = Associate.new(:user => current_user, :community => @community)	
 	
-	respond_to do |format|
-		if @community.save && associate.save		
-			format.html { render community_url(@community.id), notice: 'Community was successfully created.' }		
-	    end
-	end
+  	respond_to do |format|
+  		if @community.save && associate.save		
+  			format.html { render community_url(@community.id), notice: 'Community was successfully created.' }		
+  	    end
+  	end
   end  
 
 

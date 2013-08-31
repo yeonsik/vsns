@@ -3,6 +3,62 @@ vsns
 
 : vertical sns with big pie team
 
+
+#### 2013년 8월 30일 (#2), hschoi branch에서 dkim branch를 생성함. 
+
+#### 2013년 8월 30일 (#1), hschoi 브랜치에 추가된 내용
+
+* 변용훈님이 `tagsinput-rails` 젬을 이용하여 코딩해 주신 부분을 `bootstrap-tagsinput-rails` 젬으로 대치하여 변경하였습니다. 현재 프로젝트에서는 `Twitter Bootstrap`을 사용하고 있어서 스타일링이 어울리 않더군요. 그것 말고는 잘 동작합니다. 
+
+* 그래서 검색했더니 `bootstrap-tagsinput` 이라는 jQuery plugin이 있어서 이것을 assets pipeline을 이용하여 쉽게 사용할 수 있도록 젬으로 만들었습니다. https://github.com/rorlab/bootstrap-tagsinput-rails
+
+# Bootstrap::Tagsinput::Rails
+
+Original Git source - https://github.com/timschlechter/bootstrap-tagsinput
+
+To gemify the assets of `bootstrap-tagsinput` jQuery plugin for Rails >= 3.1
+
+## Compatibility
+
+Designed for Bootstrap 2.3.2 and 3
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'bootstrap-tagsinput-rails'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install bootstrap-tagsinput-rails
+
+## Usage
+
+in app/assets/application.js
+
+```
+//= require bootstrap-tagsinput
+```
+
+in app/assets/application.css
+
+```
+*= require bootstrap-tagsinput
+```
+
+in form view, you should add `data-role='tagsinput'` within input tag as the follows: for example, in `simple-form` view template,
+
+```
+<%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
+```
+
+That's it
+
+
 #### 2013년 8월 28일(#6), hschoi 브랜치에 추가된 내용
 
 * Comment가 하나 추가되면 해당 Item의 모델 객체의 updated_at 날짜가 갱신되어 페이지의 최상단에 보이게 됩니다. 

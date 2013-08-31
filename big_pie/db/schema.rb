@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20130830084854) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "likes_count",      default: 0
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"

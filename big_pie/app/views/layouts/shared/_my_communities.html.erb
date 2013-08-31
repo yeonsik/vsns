@@ -8,11 +8,11 @@
 			<% if current_user.communities.exists? community %>
 				<li><%= link_to community.name, community %></li>			
 			<% else %>
-				<li> <%= community.name %> (<%= link_to 'join', "#{community.id}/join", :method => :post %>) </li>				
+				<li> <%= community.name %> (<%= link_to 'join', "/communities/#{community.id}/join", :method => :post %>) </li>				
 			<% end %>
 		<% end%>
 	<% end %>	  	
-	<div><%= link_to "Create a community", '#', class:'add_a_comment_link' %></div>
+	<div><%= link_to "Create a community", '#', class:'add_a_community_link' %></div>
 		<div class='comment_form_of_item'>
 			<%= render 'communities/form' %>
 		</div>
