@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index]
+  before_filter :set_communities, only: [:index, :show, :new, :edit]
 
   layout 'two_columns'
 
@@ -20,7 +21,7 @@ class ItemsController < ApplicationController
       @other_user = nil if current_user == @other_user
     end
     @items = @items.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
-    @communities = Community.all
+    # @communities = Community.all
     if request.xhr?
       sleep(1)
       render @items
@@ -30,19 +31,19 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @communities = Community.all
+    # @communities = Community.all
   end
 
   # GET /items/new
   def new
     @item = Item.new
-    @communities = Community.all
+    # @communities = Community.all
   end
 
   # GET /items/1/edit
   def edit
     authorize_action_for(@item)
-    @communities = Community.all
+    # @communities = Community.all
   end
 
   # POST /items
@@ -96,5 +97,9 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count, :tag_list, :remote_photo_url, :remove_photo)
+    end
+
+    def set_communities
+      @communities = Community.all
     end
 end
