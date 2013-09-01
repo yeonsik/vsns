@@ -1,9 +1,11 @@
 vsns
 ====
 
-: vertical sns with big pie team
+: Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 당분간 VSNS의 기능추가는 없습니다. 
 
+* 최종 tag 버전은 v0.1.1 입니다. 
 
 #### 2013년 9월 1일 => Community 관련 기능 보완 (bbugguj)
 
