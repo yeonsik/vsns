@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     @title = "Following"
     @user = User.find(params[:id])
     @users = @user.followings.paginate(page: params[:page])
-    @communities = @user.communities
+    @communities_joined = @user.communities
     render 'show_follow'
   end
 
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
-    @communities = @user.communities
+    @communities_joined = @user.communities
     render 'show_follow'
   end
 
