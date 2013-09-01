@@ -1,0 +1,16 @@
+<%= content_for :item_content do %>
+
+  <%= render 'layouts/shared/whose_items' %>
+  <%= render 'layouts/shared/which_community' %>
+
+  <div class='row-fluid'>
+    <div class='span9'>
+    <%= yield %>
+    </div>
+    <div class='span3'>
+      <%= render "layouts/shared/sidebar" %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

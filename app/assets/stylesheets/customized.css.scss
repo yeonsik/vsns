@@ -1,0 +1,39 @@
+a:hover{
+  text-decoration: none !important;
+};
+a.brand {
+  font-weight:bold !important;
+  font-style: italic;
+}
+.form-actions {
+  margin-bottom:0 !important;
+}
+form {
+  margin-bottom:0 !important;
+  margin-top:1em !important;
+}
+.note-editor {
+  background-color: white;
+}
+.fixed-label {
+   margin-bottom:2em;
+   padding-left:190px;
+  @media (max-width: 480px) { 
+    padding-left:0;
+  }
+}
+.carousel {
+  margin-bottom:0;
+  color:#999999;
+  .caption {
+    font-style:italic;
+    font-size:11px;
+  }
+  .item.active {
+    margin-bottom:0;
+  }
+  img { margin: 0 auto; margin-bottom:.3em;}
+}
+.carousel .carousel-control { visibility: hidden; }
+.carousel:hover .carousel-control { visibility: visible; }
+.carousel-indicators { display:none;}

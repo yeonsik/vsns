@@ -1,4 +1,0 @@
-<% community = current_user.communities.build %>
-<%= simple_form_for( community, :remote => true) do |f| %>  
-  <%= f.input :name, label: false, input_html:{class:'span12'} %>
-<% end %>  

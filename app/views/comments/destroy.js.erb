@@ -1,0 +1,9 @@
+$("#comment_<%= @comment.id %>").slideUp("fast");
+$("#count_of_comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").html("<%= j render('comments/comment_count', :comment_count => @commentable.comments(true).size)%>").effect("highlight", {}, 500);
+$("#item-thumbnail-<%= @commentable.id %> .info .stat .comment-count").text("<%= @commentable.comments(true).size %>");
+
+<% if @commentable.comments.size == 0 %>
+  $("#header_of_comments_of_<%=@commentable.class.name %>_<%= @commentable.id %>").addClass("disabled").removeClass('enabled');
+<% end %>
+
+<% flash.clear %>

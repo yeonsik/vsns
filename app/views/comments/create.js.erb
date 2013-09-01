@@ -1,0 +1,9 @@
+$("#comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").append( "<%=j render(@comment) %>" );
+$("#comment_form_of_<%=@commentable.class.name %>_<%=@commentable.id %> form")[0].reset();
+$("#count_of_comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").html("<%= j render('comments/comment_count', :comment_count => @commentable.comments(true).size)%>").effect("highlight", {}, 500);
+
+if($("#header_of_comments_of_<%=@commentable.class.name %>_<%= @commentable.id %>").hasClass('disabled') == true ){
+  $("#header_of_comments_of_<%=@commentable.class.name %>_<%= @commentable.id %>").addClass("enabled").removeClass('disabled');
+};
+
+<% flash.clear %>
