@@ -3,6 +3,19 @@ vsns
 
 : vertical sns with big pie team
 
+
+## Dev.Study VSNS Project v0.1.0 just pushed !!!
+: as of 2013년 9월 1일, 18:45am
+
+* 이제 Big Pie 팀프로젝트로 공동(?) 개발된 `vsns Blog project`를 master branch에 머지하고 v0.1.0 태그를 달아서 github에 push했습니다. 
+
+* 상당 부분의 refactoring 과정이 필요하고, 약간의 버그가 있을 수 있습니다. 이러한 부분에 대한 멤버들의 손질이 필요합니다. 
+
+* 본 프로젝트의 소스를 공유하여 작업을 하고자 할 때는 이전까지 방식과는 달리 https://github.com/bigpie/vsns 로 접속하신 후 브라우저 화면 우측상단에 있는 `Fork` 버튼을 클릭하여 자신의 계정으로 forking 하신 후에 작업을 하시고 변경내용에 대한 머지를 원할 경우에는 `pull request` 작업을 통하여 하여 주시기 바랍니다.
+
+* Forking과 Pull Request에 대한 사항 github 홈페이지를 참조하시 바랍니다.
+
+
 #### 2013년 9월 01일, hschoi 브랜치에 추가된 내용 => 커뮤니티 기능추가
 
 * `Community` 기능이 추가되었습니다. 이를 위해 `Community` 리소스를 추가했고, User와 `Community` 모델을 연결을 다대다로 연결하기 위해서 `Associate`라는 join 모델을 추가했습니다.
