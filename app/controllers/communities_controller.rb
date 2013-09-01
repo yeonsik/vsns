@@ -8,7 +8,7 @@ class CommunitiesController < ApplicationController
 
   def edit
     @community = Community.find(params[:id])
-    @communities = current_user.communities_owned_by_me
+    @communities_joined = current_user.communities
   end
 
   def create  	
