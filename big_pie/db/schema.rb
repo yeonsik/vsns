@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830084854) do
+ActiveRecord::Schema.define(version: 20130901031803) do
 
   create_table "associates", force: true do |t|
     t.integer  "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20130830084854) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "likes_count",      default: 0
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
@@ -40,7 +41,11 @@ ActiveRecord::Schema.define(version: 20130830084854) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
+    t.text     "description"
   end
+
+  add_index "communities", ["owner_id"], name: "index_communities_on_owner_id"
 
   create_table "items", force: true do |t|
     t.integer  "user_id"

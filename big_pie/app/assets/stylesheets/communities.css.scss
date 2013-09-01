@@ -1,0 +1,64 @@
+#community_header {
+  .info {
+    padding:.5em 1em;
+    border:1px solid #eaeaea;
+    margin-bottom: 1em;
+    display:none;
+  }
+  .owner {
+    font-size:12px !important;
+  }
+  .description {
+    padding:.5em 1em;
+    border:1px solid #eaeaea;
+    margin-bottom: 1em;
+    color:#999999;
+  }
+}
+.community_form {
+  display:none;
+  li.error {
+    color:red;
+    margin-top:.3em !important;
+    line-height:1.2em;
+  }
+  .required {
+    margin-bottom:0 !important;
+  }
+}
+ul#community_list {
+  margin-left:0;
+  li {
+    list-style-type: none;
+    margin-left:0;
+    padding:.5em 1em;
+    background-color: white;
+    margin-bottom:3px;
+    border:1px solid white;
+    &:hover {
+      background-color: #eaeaea;
+      border:1px solid #dcdcdc;
+    };
+
+  }
+}
+.one_community {
+  float:right;
+}
+.list_of_members {
+  margin-top:2em;
+  h3 {margin-top:0;}
+  .member {
+    padding:.5em 1em;
+    background-color:white;
+    margin-bottom:.5em;
+  }
+}
+
+#my_communities {
+  ol li {
+    padding:.5em 1em;
+    background-color: white !important;
+    margin-bottom:.5em;
+  }
+}

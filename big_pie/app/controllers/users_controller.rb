@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
   layout "two_columns"
 
+  def communities
+    user = User.find(params[:id])
+    if current_user == user
+      @other_user = nil
+      @communities = current_user.communities
+    else
+      @other_user = user
+      @communities = user.communities
+    end
+  end
+  
   def like 
     @user = User.find(params[:id])
-    @item = Item.find(params[:item_id])
-    @user.like! @item
+    @likeable = params[:likeable_type].classify.constantize.send('find', params[:likeable_id])
+    @user.like! @likeable
 
     respond_to do |format|
       format.js
@@ -14,8 +25,8 @@ class UsersController < ApplicationController
 
   def dislike
     @user = User.find(params[:id])
-    @item = Item.find(params[:item_id])
-    @user.dislike! @item
+    @likeable = params[:likeable_type].classify.constantize.send('find', params[:likeable_id])
+    @user.dislike! @likeable
 
     respond_to do |format|
       format.js

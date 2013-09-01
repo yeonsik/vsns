@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   has_many :associates
   has_many :communities, :through => :associates
 
+  has_many :communities_owned_by_me, class_name: 'Community', foreign_key: :owner_id
+
 
   def like!(item)
     likes.create!( likeable: item)

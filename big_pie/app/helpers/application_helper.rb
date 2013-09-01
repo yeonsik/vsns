@@ -16,11 +16,11 @@ module ApplicationHelper
   def list_of_likers(item)
     users = item.likers
     users_count = users.size
-    emails_return = users[0..9].map(&:email).join('<br />')
+    emails_return = users[0..9].map {|user| "<i class='icon-user'></i> " + user.email}.join('<br />')
     if users_count > 11
       emails_return += "<br />#{(users_count - 10)} more..."
     end
-    emails_return
+    "<div style='text-align:left !important;'>#{emails_return}</div>"
   end
 
 end

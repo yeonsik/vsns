@@ -3,6 +3,102 @@ vsns
 
 : vertical sns with big pie team
 
+#### 2013년 9월 01일, hschoi 브랜치에 추가된 내용 => 커뮤니티 기능추가
+
+* `Community` 기능이 추가되었습니다. 이를 위해 `Community` 리소스를 추가했고, User와 `Community` 모델을 연결을 다대다로 연결하기 위해서 `Associate`라는 join 모델을 추가했습니다.
+
+  ```
+  class Community < ActiveRecord::Base
+    has_many :associates, dependent: :destroy
+    has_many :users, :through => :associates
+    has_many :items, :through => :users
+  end
+
+  class Associate < ActiveRecord::Base
+    belongs_to :user
+    belongs_to :community
+
+    before_save :default_values
+
+    def default_values
+      self.access_type = "member"
+    end
+  end
+  ```
+
+* 그리고 `User` 모델에는 아래와 같이 관계설정을 추가했습니다. 
+
+  in app/models/user.rb
+
+  ```
+  has_many :associates
+  has_many :communities, :through => :associates
+  ```
+
+
+* Community 기능은 다음과 같습니다. 
+
+  1. `Community` 생성기능 : 우측 `My Join Communities` 위젯의 아래에 보면 `Create a community` 링크를 클릭하면 바로 아래에 입력창이 보이게 됩니다. 입력창에 커뮤니티명을 입력하고 엔터키를 누르면 ajax 기능을 이용하여 `My Join Communities` 목록에 추가됩니다. 이 항목에 대한 유효성 검증은 두가지입니다. `:presence => true`, `:uniqueness => true`.
+  2. `My Join Communities` 에는 본인이 멤버로 등록된 Community가 보이게 되는데, 10개가 넘어갈 때는 10개만 표시되고 그 아래에 10개를 뺀 수를 `more...` 링크로 보여줍니다. 이 링크를 클릭하면 전체 목록을 볼 수 있는 페이지로 이동합니다. 
+  3. 각 `Community` 항목의 오른쪽에는 가입(join)/탈퇴(leave) 링크가 있어서 편리하게 가입 및 탈퇴가 가능하도록 했습니다. 
+  4. `Community` 링크를 클릭하면 가입된 모든 멤버의 `items` 들이 보여집니다. 
+
+
+#### 2013년 8월 30일 (#2), hschoi branch에서 dkim branch를 생성함. 
+
+#### 2013년 8월 30일 (#1), hschoi 브랜치에 추가된 내용
+
+* 변용훈님이 `tagsinput-rails` 젬을 이용하여 코딩해 주신 부분을 `bootstrap-tagsinput-rails` 젬으로 대치하여 변경하였습니다. 현재 프로젝트에서는 `Twitter Bootstrap`을 사용하고 있어서 스타일링이 어울리 않더군요. 그것 말고는 잘 동작합니다. 
+
+* 그래서 검색했더니 `bootstrap-tagsinput` 이라는 jQuery plugin이 있어서 이것을 assets pipeline을 이용하여 쉽게 사용할 수 있도록 젬으로 만들었습니다. https://github.com/rorlab/bootstrap-tagsinput-rails
+
+# Bootstrap::Tagsinput::Rails
+
+Original Git source - https://github.com/timschlechter/bootstrap-tagsinput
+
+To gemify the assets of `bootstrap-tagsinput` jQuery plugin for Rails >= 3.1
+
+## Compatibility
+
+Designed for Bootstrap 2.3.2 and 3
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'bootstrap-tagsinput-rails'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install bootstrap-tagsinput-rails
+
+## Usage
+
+in app/assets/application.js
+
+```
+//= require bootstrap-tagsinput
+```
+
+in app/assets/application.css
+
+```
+*= require bootstrap-tagsinput
+```
+
+in form view, you should add `data-role='tagsinput'` within input tag as the follows: for example, in `simple-form` view template,
+
+```
+<%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
+```
+
+That's it
+
+
 #### 2013년 8월 28일(#6), hschoi 브랜치에 추가된 내용
 
 * Comment가 하나 추가되면 해당 Item의 모델 객체의 updated_at 날짜가 갱신되어 페이지의 최상단에 보이게 됩니다. 

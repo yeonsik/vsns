@@ -1,4 +1,14 @@
-<%= simple_form_for( current_user.communities.build, :remote => true) do |f| %>  
-  <%= f.input :name, label: false, input_html:{class:'span12', rows: 4} %>
-  <%= f.button :submit%>
+<%= simple_form_for @community do |f| %>  
+  <%= f.input :name, input_html:{class:'span12'} %>
+  <%= f.input :description, input_html:{class:'span12', rows: 5} %>
+  <%= f.button :submit  %>
+  <%= link_to "Back", :back, class:'btn' %>
 <% end %>  
+<div class='well list_of_members'>
+  <h3>List of Members</h3>
+  <% if @community.users.size > 0 %>
+    <%= render partial: 'communities/member', as: :member, collection: @community.users  %>
+  <% else %>
+    <div class='member'>No members</div>
+  <% end %>
+</div>
