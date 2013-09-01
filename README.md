@@ -4,27 +4,32 @@ vsns
 : vertical sns with big pie team
 
 
-#### 2013년 9월 1일 => Community 관련 기능 보완
 
-* ItemController의 show, edit, new 액션에서 before_filter를 통해 set_communities_joined를 처리하도록 함
+#### 2013년 9월 1일 => Community 관련 기능 보완 (bbugguj)
 
-** 이유: layouts/shared/_my_communities.html.erb에서 @communities_joined를 사용하여 community 목록을 구성하는데, 
+##### 1. ItemController의 show, edit, new 액션에서 before_filter를 통해 set_communities_joined를 처리하도록 함
 
-show.html, edit.html, new.html 에서는 @communities_joined가 nil이어서 오류 발생
+ * 이유: layouts/shared/_my_communities.html.erb에서 @communities_joined를 사용하여 community 목록을 구성하는데, show.html, edit.html, new.html 에서는 @communities_joined가 nil이어서 오류 발생
+ * 관련 파일
+  - controllers/items_controller.rb
 
-** 관련 파일
+##### 2. Community 추가 후 My Join Communities 의 count를 변경하도록 수정
 
-*** controllers/items_controller.rb
+ * 관련 파일
+  - view/communities/create.js.erb
+  - view/layouts/shared/_my_communities.html.erb
+  - controllers/communities_controller.rb
 
-* Community 추가 후 My Join Communities 의 count를 변경하도록 수정
+##### 3. Community 최초 추가시 My Join Communities 목록에 반영 안되는 부분 수정
 
-** 관련 파일
+ * 수정부분: @communities_joined.size가 0인 경우도 ul 영역을 생성하도록 수정.
 
-*** view/communities/create.js.erb
+ * 이유: view/communities/create.js.erb에서는 #community_list 영역에 새로 생성한 cummunity를 추가하도록 구현되어 있음.
+communities.size가 0인 경우에도 #community_list 영역을 생성해주어야 이 부분이 정상적으로 동작함
 
-*** view/layouts/shared/_my_communities.html.erb
+* 관련 파일
+ - view/layouts/shared/_my_communities.html.erb
 
-*** controllers/communities_controller.rb
 
 
 ## Dev.Study VSNS Project v0.1.0 just pushed !!!
