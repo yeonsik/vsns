@@ -1,6 +1,7 @@
 $(".community_form form")[0].reset();
 $(".community_form ul").remove();
-<% if @community.errors.empty? %>
+<% if @community.errors.empty? %>  
+  $("#my_communities_size").html("<%= @communities_joined.size %>");
   $("#community_list").append("<%=j raw(list_of_communities(@community)) %>");
   $("a[rel~=tooltip], .has-tooltip").tooltip({html: true});
 <% else %>
