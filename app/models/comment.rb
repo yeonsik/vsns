@@ -11,4 +11,5 @@ class Comment < ActiveRecord::Base
   has_many :likers, through: :likes,  source: :user
 
   default_scope -> {order(created_at: :asc)}
+  
 end

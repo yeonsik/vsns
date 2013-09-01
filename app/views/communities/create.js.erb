@@ -1,0 +1,9 @@
+$(".community_form form")[0].reset();
+$(".community_form ul").remove();
+<% if @community.errors.empty? %>
+  $("#community_list").append("<%=j raw(list_of_communities(@community)) %>");
+  $("a[rel~=tooltip], .has-tooltip").tooltip({html: true});
+<% else %>
+  $(".community_form").append("<ul><%=raw @community.errors.full_messages.map{|error|"<li class='error'>#{error}</li>"}.join()%></ul>");
+<% end %>
+

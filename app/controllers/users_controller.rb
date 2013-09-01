@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
   layout "two_columns"
 
+  def communities
+    user = User.find(params[:id])
+    if current_user == user
+      @other_user = nil
+      @communities = current_user.communities
+    else
+      @other_user = user
+      @communities = user.communities
+    end
+  end
+  
   def like 
     @user = User.find(params[:id])
     @likeable = params[:likeable_type].classify.constantize.send('find', params[:likeable_id])

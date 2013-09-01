@@ -1,0 +1,23 @@
+
+<div class='title'>
+  My Join Communities <small><%= @communities.size %></small>
+</div>    
+<div class='my_communities'>  
+	<% if @communities.size > 0 %>
+	  <ul id='community_list'>
+			<% @communities.each_with_index do |community, index| %>		
+				<% if index < 10 %>
+					<%= list_of_communities(community) %>
+				<% else %>
+					<li>> <%= link_to "#{(@communities.size - 10)} more...", my_communities_path(@other_user.nil? ? current_user : @other_user) %></li>
+					<% break %>
+				<% end %>
+			<% end%>
+		</ul>
+	<% end %>	  	
+	<div><%= link_to raw("<i class='icon-group'></i> Create a community"), "#", id:'add_a_community_link' %></div>
+		<div class='community_form'>
+			<%= render 'communities/form_for_widget' %>
+		</div>
+</div>   
+

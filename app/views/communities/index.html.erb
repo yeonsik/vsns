@@ -1,0 +1,18 @@
+<div class='title'>
+  My Communities <small><%= current_user.communities.size %></small>
+</div>    
+<div class='my_posts'>  
+  <% if @communities.size > 0 %>
+    <% @communities.each do |community| %>    
+      <% if current_user.communities.exists? community %>
+        <li><%= link_to community.name, community %></li>     
+      <% else %>
+        <li> <%= community.name %> (<%= link_to 'join', "#{community.id}/join", :method => :post %>) </li>        
+      <% end %>
+    <% end%>
+  <% end %>     
+  <div><%= link_to "Create a community", new_community_path, class:'add_a_comment_link' %></div>
+    <div class='comment_form_of_item'>
+      <%= render 'communities/form' %>
+    </div>
+</div>

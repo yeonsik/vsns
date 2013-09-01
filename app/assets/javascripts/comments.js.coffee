@@ -1,5 +1,5 @@
 $ ->
-  $("#comment_body").keypress (event) ->
+  $("#comment_body, #community_name").keypress (event) ->
     if event.which is 13
       event.preventDefault()
-      $("#new_comment").submit()
+      $(this).closest('form').submit()
