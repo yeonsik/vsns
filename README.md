@@ -27,8 +27,8 @@ vsns
  * 이유: view/communities/create.js.erb에서는 #community_list 영역에 새로 생성한 cummunity를 추가하도록 구현되어 있음.
 communities.size가 0인 경우에도 #community_list 영역을 생성해주어야 이 부분이 정상적으로 동작함
 
-* 관련 파일
- - view/layouts/shared/_my_communities.html.erb
+ * 관련 파일 
+  - view/layouts/shared/_my_communities.html.erb
 
 
 
