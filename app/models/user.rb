@@ -30,6 +30,13 @@ class User < ActiveRecord::Base
 
   has_many :communities_owned_by_me, class_name: 'Community', foreign_key: :owner_id
 
+  def join!(community)
+    associates.create!(community_id: community.id)
+  end
+
+  def leave!(community)
+    associates.find_by(community_id: community.id).destroy!
+  end
 
   def like!(item)
     likes.create!( likeable: item)

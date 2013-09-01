@@ -11,7 +11,10 @@ BigPie::Application.routes.draw do
   get 'tags/:tag', to: 'items#index', as: :tag
 
   get 'communities/:community_id', to: 'items#index', as: :community
-  post 'communities/:community_id/join' => 'communities#join', as: :join_community
+  post 'communities/:community_id/join' => 'users#join', as: :join_community
+  delete 'communities/:community_id/leave' => 'users#leave', as: :leave_community
+
+
 
   resources :communities
 

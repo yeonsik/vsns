@@ -11,17 +11,6 @@ class CommunitiesController < ApplicationController
     @communities = current_user.communities_owned_by_me
   end
 
-  def join
-  	community = Community.find(params[:community_id])
-  	associates = Associate.where :user => current_user, :community => community
-
-  	if associates.size == 0
-  		associate = Associate.create :user => current_user, :community => community
-  	end
-
-  	redirect_to community_path community
-  end  
-
   def create  	
   	@community = Community.new(community_params)
     @community.owner = current_user

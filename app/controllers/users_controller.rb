@@ -1,14 +1,38 @@
 class UsersController < ApplicationController
   layout "two_columns"
 
+  def join
+
+    @community = Community.find(params[:community_id])
+    current_user.join!(@community)
+
+    respond_to do | format |
+      format.js
+    end
+
+  end  
+
+  def leave
+    
+    @community = Community.find(params[:community_id])
+    current_user.leave!(@community)
+
+    respond_to do | format |
+      format.js
+    end
+  end  
+
+
   def communities
     user = User.find(params[:id])
     if current_user == user
       @other_user = nil
-      @communities = current_user.communities
+      @communities = current_user.communities_owned_by_me
+      @communities_joined = current_user.communities
     else
       @other_user = user
-      @communities = user.communities
+      @communities = user.communities_owned_by_me
+      @communities_joined = user.communities
     end
   end
   
