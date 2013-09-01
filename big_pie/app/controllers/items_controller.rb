@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index]
+  before_filter :set_communities_joined, only: [:show, :edit, :new]
 
   layout 'two_columns'
 
@@ -31,20 +32,17 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   # GET /items/1.json
-  def show
-    @communities = Community.all
+  def show    
   end
 
   # GET /items/new
   def new
-    @item = Item.new
-    @communities = Community.all
+    @item = Item.new    
   end
 
   # GET /items/1/edit
   def edit
-    authorize_action_for(@item)
-    @communities = Community.all
+    authorize_action_for(@item)    
   end
 
   # POST /items
@@ -98,5 +96,9 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count, :tag_list, :remote_photo_url, :remove_photo)
+    end
+
+    def set_communities_joined            
+      @communities_joined = current_user.communities if user_signed_in?  
     end
 end
