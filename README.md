@@ -39,7 +39,7 @@ communities.size가 0인 경우에도 #community_list 영역을 생성해주어�
 
 * 상당 부분의 refactoring 과정이 필요하고, 약간의 버그가 있을 수 있습니다. 이러한 부분에 대한 멤버들의 손질이 필요합니다. 
 
-* 본 프로젝트의 소스를 공유하여 작업을 하고자 할 때는 이전까지 방식과는 달리 https://github.com/bigpie/vsns 로 접속하신 후 브라우저 화면 우측상단에 있는 `Fork` 버튼을 클릭하여 자신의 계정으로 forking 하신 후에 작업을 하시고 변경내용에 대한 머지를 원할 경우에는 `pull request` 작업을 통하여 하여 주시기 바랍니다.
+* 본 프로젝트의 소스를 공유하여 작업을 하고자 할 때는 이전까지 방식과는 달리 https://github.com/dev-study/vsns 로 접속하신 후 브라우저 화면 우측상단에 있는 `Fork` 버튼을 클릭하여 자신의 계정으로 forking 하신 후에 작업을 하시고 변경내용에 대한 머지를 원할 경우에는 `pull request` 작업을 통하여 하여 주시기 바랍니다.
 
 * Forking과 Pull Request에 대한 사항 github 홈페이지를 참조하시 바랍니다.
 
