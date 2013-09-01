@@ -1,0 +1,31 @@
+<% if params[:community_id].present? %>
+  <% any_community = Community.find(params[:community_id]) %>
+  <div class='row-fluid'>
+    <div id='community_header' class='span12'>
+      <h2>
+        <%= any_community.name %> 
+        <%= link_to raw("<i class='icon-info-sign'></i>"), '#', id: 'community_header_info_link' %>
+        <% if any_community.deletable_by? current_user %>
+        <small class='badge'>
+          <%= link_to "Edit", edit_community_path(any_community), style:'color:yellow;' %>
+        </small>
+        <% end %>
+      </h2>
+      <% if any_community.description.present? %>
+        <div class='description'><%= any_community.description || "no description" %></div>
+      <% end %>
+      <div class='info'>
+        <small class="badge">
+          Items:
+          <span style='color:#00ff00;'><%= any_community.items.size %></span>
+        </small>
+        <small class='owner'>
+          <i class='label label-info'>Members: <%= any_community.users.size %></i>
+        </small>
+        <small class='owner'>
+          <i class='label label-important'>Owner: <%= any_community.owner.email %></i>
+        </small>
+      </div>
+    </div>
+  </div>
+<% end %>
