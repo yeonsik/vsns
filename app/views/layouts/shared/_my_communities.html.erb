@@ -5,7 +5,7 @@
 <div class='my_communities'>  
 	
 	<ul id='community_list'>
-	  	<% if @communities_joined.size > 0 %>
+  	<% if @communities_joined.size > 0 %>
 			<% @communities_joined.each_with_index do |community, index| %>		
 				<% if index < 10 %>
 					<%= list_of_communities(community) %>
@@ -16,7 +16,7 @@
 			<% end%>
 		<% end %>	  	
 	</ul>
-	
+
 	<div><%= link_to raw("<i class='icon-group'></i> Create a community"), "#", id:'add_a_community_link' %></div>
 		<div class='community_form'>
 			<%= render 'communities/form_for_widget' %>

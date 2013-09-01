@@ -13,8 +13,7 @@ class CommunitiesController < ApplicationController
 
   def create  	
   	@community = Community.new(community_params)
-    @community.owner = current_user
-    
+    @community.owner = current_user    
     @community.users << current_user
 	
   	respond_to do |format|
