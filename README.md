@@ -41,7 +41,8 @@ vsns
   1. `Community` 생성기능 : 우측 `My Join Communities` 위젯의 아래에 보면 `Create a community` 링크를 클릭하면 바로 아래에 입력창이 보이게 됩니다. 입력창에 커뮤니티명을 입력하고 엔터키를 누르면 ajax 기능을 이용하여 `My Join Communities` 목록에 추가됩니다. 이 항목에 대한 유효성 검증은 두가지입니다. `:presence => true`, `:uniqueness => true`.
   2. `My Join Communities` 에는 본인이 멤버로 등록된 Community가 보이게 되는데, 10개가 넘어갈 때는 10개만 표시되고 그 아래에 10개를 뺀 수를 `more...` 링크로 보여줍니다. 이 링크를 클릭하면 전체 목록을 볼 수 있는 페이지로 이동합니다. 
   3. 각 `Community` 항목의 오른쪽에는 가입(join)/탈퇴(leave) 링크가 있어서 편리하게 가입 및 탈퇴가 가능하도록 했습니다. 
-  4. `Community` 링크를 클릭하면 가입된 모든 멤버의 `items` 들이 보여집니다. 
+  4. `My Join Communities` 에 보이는 각 `Community` 링크를 클릭하면 가입된 모든 멤버의 `items` 들이 보여집니다. 
+  5. 상단 메뉴 중 `My Communities` 는 본인인 개설한 Community 목록을 보여 줍니다. 
 
 
 #### 2013년 8월 30일 (#2), hschoi branch에서 dkim branch를 생성함. 

@@ -1,15 +1,15 @@
 
 <div class='title'>
-  My Join Communities <small><%= @communities.size %></small>
+  My Join Communities <small><%= @communities_joined.size %></small>
 </div>    
 <div class='my_communities'>  
-	<% if @communities.size > 0 %>
+	<% if @communities_joined.size > 0 %>
 	  <ul id='community_list'>
-			<% @communities.each_with_index do |community, index| %>		
+			<% @communities_joined.each_with_index do |community, index| %>		
 				<% if index < 10 %>
 					<%= list_of_communities(community) %>
 				<% else %>
-					<li>> <%= link_to "#{(@communities.size - 10)} more...", my_communities_path(@other_user.nil? ? current_user : @other_user) %></li>
+					<li>> <%= link_to "#{(@communities_joined.size - 10)} more...", my_communities_path(@other_user.nil? ? current_user : @other_user) %></li>
 					<% break %>
 				<% end %>
 			<% end%>
