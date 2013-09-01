@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index]
-  before_filter :set_communities_joined, only: [:show, :edit, :new]
+  before_filter :set_communities_joined, only: [:index, :show, :edit, :new]
 
   layout 'two_columns'
 
@@ -17,11 +17,8 @@ class ItemsController < ApplicationController
     end
     if params[:user_id]
       @other_user = User.find(params[:user_id])
-      @items = @items.where( user_id: @other_user.id) 
-      @communities_joined = @other_user.communities
+      @items = @items.where( user_id: @other_user.id)       
       @other_user = nil if current_user == @other_user
-    else
-      @communities_joined = current_user.communities if user_signed_in?
     end
     @items = @items.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
     if request.xhr?
@@ -98,7 +95,11 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:user_id, :photo, :url_ref, :description, :starts_count, :tag_list, :remote_photo_url, :remove_photo)
     end
 
-    def set_communities_joined            
-      @communities_joined = current_user.communities if user_signed_in?  
+    def set_communities_joined    
+      if params[:user_id]    
+        @communities_joined = User.find(params[:user_id]).communities 
+      else  
+        @communities_joined = current_user.communities if user_signed_in?  
+      end
     end
 end
