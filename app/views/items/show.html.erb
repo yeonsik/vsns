@@ -1,8 +1,9 @@
 <%= render 'show_item', item: @item %>
 
 <div class='actions'>
-<%= link_to 'Edit', edit_item_path(@item), class:'btn' %>
-<%= link_to 'Back', items_path, class:'btn' %>
+  <!--TODO: to set the following link to limit its accessibility-->
+  <%= link_to 'Edit', edit_item_path(@item), class:'btn' %>
+  <%= link_to 'Back', items_path, class:'btn' %>
 </div>
 
 

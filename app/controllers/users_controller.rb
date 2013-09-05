@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  # TODO: make before_action callback method....
+
   layout "two_columns"
 
   def join

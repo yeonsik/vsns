@@ -6,6 +6,7 @@
     <%= item.user.email %> (<%= time_ago_in_words(item.created_at)%> ago)
   </div>
   <div class='description'>
+    <!--You should use 'raw' method in this context because item's description can include html tags.-->
     <%=raw item.description %>
   </div>
   <div class='tag_list' %>
@@ -15,7 +16,8 @@
     <%= render 'layouts/shared/like_status', likeable: item %>
   </div>
 
-      <%= render "comments", item: item %>
+  <!--List up comments of this item.-->
+  <%= render "comments", item: item %>
 
 </div>
 

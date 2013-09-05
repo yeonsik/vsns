@@ -1,5 +1,10 @@
 <div id="items"> 
   <%= render @items %>
 </div>
+
+<!--To apply bottom-less pagination using pageless jQuery plugin-->
+<!--Gem : pageless-rails & will_paginate-->
 <%= will_paginate @items %>
+
+<!--Already defined "pageless" helper method in app/helpers/application_helper.rb-->
 <%= pageless(@items.total_pages, items_path, '#items') %>

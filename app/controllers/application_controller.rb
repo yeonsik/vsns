@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Devise with strong parameters
+  # Reference: https://github.com/plataformatec/devise/blob/master/lib/devise/parameter_sanitizer.rb
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Send 'em back where they came from with a slap on the wrist

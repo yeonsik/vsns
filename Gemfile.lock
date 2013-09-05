@@ -1,15 +1,4 @@
 GIT
-  remote: git://github.com/plataformatec/devise.git
-  revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
-  branch: rails4
-  specs:
-    devise (2.2.4)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      warden (~> 1.2.1)
-
-GIT
   remote: git://github.com/plataformatec/simple_form.git
   revision: d2f1c63fa4b3fc93ef8c12610261960c8b0a5ab9
   tag: v3.0.0.rc
@@ -63,7 +52,7 @@ GEM
       json (~> 1.4)
       nokogiri (< 1.6.0)
       uuidtools (~> 2.1)
-    bcrypt-ruby (3.1.1)
+    bcrypt-ruby (3.1.2)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -90,6 +79,11 @@ GEM
     coffee-script-source (1.6.3)
     commonjs (0.2.6)
     debug_inspector (0.0.2)
+    devise (3.0.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.0)
     hike (1.2.3)
@@ -210,12 +204,13 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   authority
+  bcrypt-ruby
   better_errors
   binding_of_caller
   bootstrap-tagsinput-rails
   carrierwave-aws
   coffee-rails (~> 4.0.0)
-  devise!
+  devise
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
