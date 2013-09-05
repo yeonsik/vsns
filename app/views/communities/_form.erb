@@ -6,8 +6,10 @@
 <% end %>  
 <div class='well list_of_members'>
   <h3>List of Members</h3>
-  <% if @community.users.size > 0 %>
-    <%= render partial: 'communities/member', as: :member, collection: @community.users  %>
+  <% if @community.members.size > 0 %>
+  <%# if @community.users.size > 0 %>
+    <%= render partial: 'communities/member', as: :member, collection: @community.members  %>
+    <%#= render partial: 'communities/member', as: :member, collection: @community.users  %>
   <% else %>
     <div class='member'>No members</div>
   <% end %>

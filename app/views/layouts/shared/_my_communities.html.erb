@@ -1,9 +1,10 @@
-
 <div class='title'>
   My Join Communities <small><span id="my_communities_size"><%= @communities_joined.size %></span></small>
-</div>    
+</div>
+
 <div class='my_communities'>  
-	
+
+  <!--Show the list of communities-->
 	<ul id='community_list'>
   	<% if @communities_joined.size > 0 %>
 			<% @communities_joined.each_with_index do |community, index| %>		
@@ -17,9 +18,11 @@
 		<% end %>	  	
 	</ul>
 
+  <!--Add a community-->
 	<div><%= link_to raw("<i class='icon-group'></i> Create a community"), "#", id:'add_a_community_link' %></div>
-		<div class='community_form'>
-			<%= render 'communities/form_for_widget' %>
-		</div>
+  <div class='community_form'>
+    <%= render 'communities/form_for_widget' %>
+  </div>
+
 </div>   
 

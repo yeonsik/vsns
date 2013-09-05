@@ -1,4 +1,4 @@
-$("#comment_<%= @comment.id %>").slideUp("fast");
+$("#comment_<%= @comment.id %>").removeClass('just_be_added').addClass('will_be_destroyed').effect("bounce", "slow").slideUp("fast");
 $("#count_of_comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").html("<%= j render('comments/comment_count', :comment_count => @commentable.comments(true).size)%>").effect("highlight", {}, 500);
 $("#item-thumbnail-<%= @commentable.id %> .info .stat .comment-count").text("<%= @commentable.comments(true).size %>");
 

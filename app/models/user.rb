@@ -1,7 +1,16 @@
+###############################################################################
+#
+#   User Model Class      
+#
+###############################################################################
+
 class User < ActiveRecord::Base
 
   # Adds `can_create?(resource)`, etc
   include Authority::UserAbilities
+
+  # Associate User to Role Model (with Rolify Gem)
+  # You should resourcify some model you want to grant 
   rolify
   
   # Include default devise modules. Others available are:
@@ -10,42 +19,63 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, ProfileUploader       
+  # Connect avatar attribute to Carrierwave Uploader.
+  mount_uploader :avatar, ProfileUploader  
 
+###############################################################################
+##
+##   Declaration of Model Assoications       
+##
+###############################################################################
+
+  # A user has many items.
   has_many :items, dependent: :destroy
 
+  # A user has many comments.
+  has_many :comments, dependent: :destroy
+
+  # to declare associations for 'following' functionality
   has_many :relationships, foreign_key: 'following_id', dependent: :destroy
   has_many :followers, through: :relationships, source: :follower
   has_many :reverse_relationships, foreign_key: 'follower_id',
            class_name: 'Relationship',
-           dependent:   :destroy
+           dependent: :destroy
   has_many :followings, through: :reverse_relationships, source: :following
 
-  has_many :comments, dependent: :destroy
+  # to declare associations for 'like' functionality
   has_many :likes, dependent: :destroy
-  has_many :like_items, class_name: "Item", through: :likes, source: :likeable, source_type: "Item"
+  has_many :like_items, class_name: 'Item', through: :likes,
+           source: :likeable, source_type: 'Item'
 
+  # to declare associations for 'community' functionality
   has_many :associates
   has_many :communities, :through => :associates
+  has_many :communities_owned_by_me, class_name: 'Community', 
+           foreign_key: :owner_id
 
-  has_many :communities_owned_by_me, class_name: 'Community', foreign_key: :owner_id
-
+###############################################################################
+##
+##   Definitions of Method      
+##
+###############################################################################
+   
+  # Associate-Community Model
+  # Methods: join!, leave!
   def join!(community)
     associates.create!(community_id: community.id)
   end
-
   def leave!(community)
     associates.find_by(community_id: community.id).destroy!
   end
 
+  # Like Model
+  # Methods: like!, dislike!, liking?
   def like!(item)
     likes.create!( likeable: item)
   end
-
   def dislike!(item)
     likes.find_by(likeable: item).destroy!
   end
-
   def liking?(item)
     if item.nil?
       false
@@ -54,6 +84,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Relationship Model
+  # Methods: following?, follow!, unfollow!
   def following?(other_user)
     if other_user.nil?
       false
@@ -61,12 +93,11 @@ class User < ActiveRecord::Base
       relationships.find_by(follower_id: other_user.id).present?
     end
   end
-
   def follow!(other_user)
     relationships.create!(follower_id: other_user.id)
   end
-
   def unfollow!(other_user)
     relationships.find_by(follower_id: other_user.id).destroy!
   end
+
 end

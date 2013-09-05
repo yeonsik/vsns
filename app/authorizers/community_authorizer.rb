@@ -1,4 +1,3 @@
-# Other authorizers should subclass this one
 class CommunityAuthorizer < ApplicationAuthorizer
 
   # To update a specific resource instance, you must either own it or be an admin

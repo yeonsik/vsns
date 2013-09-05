@@ -9,7 +9,7 @@
       <%= truncate(strip_tags(item.description).gsub("&nbsp;",' ').gsub("&lt;", "<").gsub('&gt;', '>'), length: 200) %>
     </div>
     <% if item.tags.size > 0 %>
-    <div class='tag_list' %>
+    <div class='tag_list'>
       <i class="icon-tag"></i> Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
     </div>
     <% end %>

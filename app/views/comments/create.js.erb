@@ -1,9 +1,13 @@
 $("#comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").append( "<%=j render(@comment) %>" );
+$("#comment_<%=@comment.id %>").addClass('just_be_added');
 $("#comment_form_of_<%=@commentable.class.name %>_<%=@commentable.id %> form")[0].reset();
 $("#count_of_comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").html("<%= j render('comments/comment_count', :comment_count => @commentable.comments(true).size)%>").effect("highlight", {}, 500);
 
 if($("#header_of_comments_of_<%=@commentable.class.name %>_<%= @commentable.id %>").hasClass('disabled') == true ){
   $("#header_of_comments_of_<%=@commentable.class.name %>_<%= @commentable.id %>").addClass("enabled").removeClass('disabled');
 };
+
+$("#comments_of_<%=@commentable.class.name %>_<%=@commentable.id %>").append("<%=j raw("<div id='comment_#{@comment.id}_response' class='ajax_flash_message'>#{flash[:now]}</div>") %>");
+$("#comment_<%= @comment.id %>_response").effect("bounce", "slow").delay(1000).slideUp('fast');
 
 <% flash.clear %>

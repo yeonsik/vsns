@@ -11,7 +11,9 @@ class ItemsController < ApplicationController
     if params[:tag]
       @items = Item.tagged_with(params[:tag])
     elsif params[:community_id]
-      @items = Item.where(user_id: Community.find(params[:community_id]).users.pluck(:id))
+      # Community has_many :items, :through => :users
+      # @items = Item.where(user_id: Community.find(params[:community_id]).users.pluck(:id))
+      @items = Community.find(params[:community_id]).items
     else
       @items = Item.all
     end
@@ -81,6 +83,7 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   # DELETE /items/1.json
+  # Mission : ajaxify the destroy action...
   def destroy
     authorize_action_for(@item) 
     @item.destroy

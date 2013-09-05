@@ -37,3 +37,16 @@ form {
 .carousel .carousel-control { visibility: hidden; }
 .carousel:hover .carousel-control { visibility: visible; }
 .carousel-indicators { display:none;}
+
+.ajax_flash_message {
+  border:1px solid darkgreen;
+  padding:.5em 1em;
+  background-color: rgba(52, 255, 111, 0.14);
+}
+
+.will_be_destroyed {
+  border: 1px dashed red;
+}
+.just_be_added {
+  border: 1px dashed green;
+}
