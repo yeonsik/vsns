@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
 ###############################################################################
 ##
-##   Declaration of Model Assoications       
+##   Declaration of Model Associations
 ##
 ###############################################################################
 
@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   # to declare associations for 'following' functionality
   has_many :relationships, foreign_key: 'following_id', dependent: :destroy
   has_many :followers, through: :relationships, source: :follower
+
   has_many :reverse_relationships, foreign_key: 'follower_id',
            class_name: 'Relationship',
            dependent: :destroy

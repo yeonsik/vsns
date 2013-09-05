@@ -23,7 +23,7 @@ class Comment < ActiveRecord::Base
 
 ###############################################################################
 ##
-##   Declaration of Model Assoications       
+##   Declaration of Model Associations
 ##
 ###############################################################################
 
@@ -39,6 +39,6 @@ class Comment < ActiveRecord::Base
 
   # Polymorphic association - has_many
   has_many :likes, as: :likeable, dependent: :destroy
-  has_many :likers, class_name: 'User', through: :likes,  source: :liker
+  has_many :likers, class_name: 'User', foreign_key: :user_id, through: :likes,  source: :liker
 
 end
