@@ -3,11 +3,52 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 6일 => hschoi branch을 master branch로 머지 (v0.1.3)
 
-#### 2013년 9월 5일 => Refactoring #1
+  * 2013년 9월 5일 자정 `Midnight Hangout Code Review` 에서 진행되었던 `refactoring` 결과를 `master branch` 로 머지하고 `git tag` 를 `v0.1.3` 으로 생성하였습니다.
 
-* 코드 리뷰를 위해 주석을 달았습니다. 그리고 코드를 정리하기 위해 refactoring을 일부 시행하였습니다.
-* TODO 리스트를 작성하였습니다.
+  * 공지한 바와 같이 이제(2013.9.6 06:00)부터는 각 유닛 리더는 이 버전(v0.1.3)을 `fork` 합니다. 그리고 유닛 멤버는 유닛 리더의 저장소를 `git clone` 합니다.
+
+정리하면,
+
+1. 각 유닛의 리더는 dev-study/vsns 저장소(v0.1.3) 를 fork합니다. 그리고 유닛 멤버는 유닛 리더의 저장소를 clone 합니다. 이에 대해서는 이준헌님이 올려 주신 링크를 참고하면 fork 기능을 이해하는데 많은 도움이 될 것입니다. http://blog.outsider.ne.kr/865
+
+2. 유닛 멤버들은 각자의 branch를 생성하여 코딩 작업을 합니다.
+
+    ```
+    $ git checkout -b [본인의 branch명]
+    ```
+
+3. 유닛 멤버는 본인의 코딩 작업이 완료되면 clone 받았던 리더의 저장소(github 내의 리더 저장소)로 커밋내용을 push 하는데, 아래와 같은 순서로 작업을 합니다.
+
+    ```
+    $ git add .
+    $ git commit -m "some commit messages"
+    $ git push origin [본인의 branch명]
+    ```
+
+
+4. 이제 유닛의 각 멤버가 협업을 통해서 작업을 완료하면, 유닛 리더는 유닛멤버들의 branch를 머지하고 (이때 약간의 커밋 충돌이 있을 수 있는데 리더는 이러한 충돌부분을 해결해야 함) 유닛 리더는 최종 `master branch` 를 `pull request` 하면 됩니다. 유닛 리더는 아래와 같은 순서로 작업을 합니다.
+    
+    ```
+    $ git pull origin [유닛멤버의 branch명]  # 유닛멤버의 수 만큼 ... 
+    $ git checkout master   
+    $ git merge [유닛멤버의 branch명]   # 유닛멤버의 수 만큼 ...
+    ```
+
+5. 멤버 branch의 머지 작업이 완료되면 유닛 리더는 아래와 같이 git push 명령을 수행합니다. 
+
+    ```
+    $ git push origin master
+    ```
+
+6. 이제 유닛 리더는 github에 접속하여 본인의 계정으로 fork한 dev-study/vsns 저장소로 `PULL REQUEST` 를 합니다. 여기 까지의 작업은 각 유닛에서 수행하는 것입니다.   
+
+
+7. 이렇게 8개의 유닛에서 `pull request` 가 들어오면 커밋터로 지정된 멤버들은 `pull request` 커밋들을 검토하고 최종 master 버전으로 `merge` 하면 됩니다.
+
+8. 절차상의 문제가 있다고 판단되시면 언제든지 연락을 주시기 바랍니다.
+
 
 #### 2013년 9월 2일 => 몇가지 버그를 수정하였습니다. 
 
