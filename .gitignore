@@ -18,5 +18,5 @@
 /public/uploads/*
 /config/database.yml
 
-.idea/
+.idea/**/*
 
