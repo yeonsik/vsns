@@ -3,6 +3,21 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+
+#### 2013년 9월 6일 => master branch에서 작업한 내용
+
+* .idea 와 tmp 디렉토리는 불필요한 디렉토리라서 제거했습니다. 
+
+* 유닛 리더께서는 `upstream` 이라는 `remote branch`를 하나 추가하시고 https://github.com/dev-study/vsns.git 로 지정해 주신 후에 `git pull upstream master` 해 주시면 됩니다. 작업 순서는 다음과 같습니다. 
+
+  ```
+  vsns $> git remote add upstream https://github.com/dev-study/vsns.git
+  vsns $> git checkout master
+  vsns %> git pull upstream master
+  ```
+
+* 이렇게 하면 dev-study/vsns 저장소의 master branch를 본인의 로컬 master 브랜치로 pull 할 수 있게 되는 것이죠. 그리고 나서 유닛 저장소로 git push origin master 하시면 최종적으로 dev-study/vsns 저장소의 업데이트된 내용이 유닛 저장소로 가져와 머지하게 되는 것입니다.   
+
 #### 2013년 9월 6일 => hschoi branch을 master branch로 머지 (v0.1.3)
 
   * 2013년 9월 5일 자정 `Midnight Hangout Code Review` 에서 진행되었던 `refactoring` 결과를 `master branch` 로 머지하고 `git tag` 를 `v0.1.3` 으로 생성하였습니다.
