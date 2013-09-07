@@ -3,6 +3,11 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 7일 => summernote 에디터(위지위그 에디터)를 wmd editor(마크다운 에디터)로 교체
+
+* items 컨트롤러의 form 뷰에서는 `description` 속성에 대해서 현재 summernote 위지위그 에디터를 사용하여 글을 작성하도록 구현되어 있습니다. 
+
+* 이것을 마크다운 에디터인 `wmd` 에디터로 교체하여 구현해 보았습니다. 이것은 `아장아장` 유닛 미션 중에 하나로 제가 별도로 구현한 것은 `wmd_editor`라는 branch를 만들어 push해 놓았습니다. 
 
 #### 2013년 9월 6일 => master branch에서 작업한 내용
 

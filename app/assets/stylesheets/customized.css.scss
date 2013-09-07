@@ -50,3 +50,41 @@ form {
 .just_be_added {
   border: 1px dashed green;
 }
+
+#editor-button-bar {
+  background-color: white;
+  border:1px solid #d3d3d3;
+}
+#editor-preview, #editor-output {
+  border:1px solid #d3d3d3;
+  padding:.5em 1em;
+  background-color: white;
+  margin-bottom:1em;
+  height:330px;
+  p:last-child {
+    margin-bottom:0;
+  }
+}
+#editor-output {
+  padding: 0;
+  pre {
+    background-color: white;
+    border:0;
+    code {
+    }
+  }
+    
+}
+
+#editor-help-panel {
+  display:none;
+  border:1px solid #d3d3d3;
+  padding: .5em 1em;
+  background-color: #caddff;
+  .spaces { background-color: #fecacb;}
+}
+
+ul.nav {
+  margin-bottom: 0;
+}
+

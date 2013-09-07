@@ -12,7 +12,6 @@
  *= require jquery.ui.all
  *= require slimbox2
  *= require bootstrap_and_overrides
- *= require summernote
  *= require bootstrap-tagsinput
  *= require_tree .
  */
