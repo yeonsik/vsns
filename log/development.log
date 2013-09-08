@@ -13801,3 +13801,1357 @@ Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 07:58:22 +000
 
 
 Started GET "/assets/load1.gif" for 183.98.150.213 at 2013-09-08 07:58:22 +0000
+
+
+Started GET "/" for 183.98.150.213 at 2013-09-08 13:16:00 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mItem Load (0.6ms)[0m  [1mSELECT "items".* FROM "items" ORDER BY "items"."updated_at" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mUser Load (6.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (1.8ms)[0m  [1mSELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = ('tags'))[0m  [["taggable_id", 6], ["taggable_type", "Item"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  [["taggable_id", 6], ["taggable_type", "Item"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?[0m  [["likeable_id", 6], ["likeable_type", "Item"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?  [["likeable_id", 6], ["likeable_type", "Item"]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = 'Item' AND "likes"."likeable_id" = 6 LIMIT 1[0m  [["user_id", 1]]
+  Rendered layouts/shared/_like_status.html.erb (105.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?  [["commentable_id", 6], ["commentable_type", "Item"]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (187.9ms)
+  Rendered items/_comments.html.erb (223.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = ('tags'))  [["taggable_id", 5], ["taggable_type", "Item"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?[0m  [["likeable_id", 5], ["likeable_type", "Item"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?  [["likeable_id", 5], ["likeable_type", "Item"]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = 'Item' AND "likes"."likeable_id" = 5 LIMIT 1[0m  [["user_id", 1]]
+  Rendered layouts/shared/_like_status.html.erb (8.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?  [["commentable_id", 5], ["commentable_type", "Item"]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (6.3ms)
+  Rendered items/_comments.html.erb (15.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = ('tags'))  [["taggable_id", 4], ["taggable_type", "Item"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?[0m  [["likeable_id", 4], ["likeable_type", "Item"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?  [["likeable_id", 4], ["likeable_type", "Item"]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = 'Item' AND "likes"."likeable_id" = 4 LIMIT 1[0m  [["user_id", 1]]
+  Rendered layouts/shared/_like_status.html.erb (10.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?  [["commentable_id", 4], ["commentable_type", "Item"]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (7.7ms)
+  Rendered items/_comments.html.erb (14.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = ('tags'))  [["taggable_id", 3], ["taggable_type", "Item"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?[0m  [["likeable_id", 3], ["likeable_type", "Item"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?  [["likeable_id", 3], ["likeable_type", "Item"]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = 'Item' AND "likes"."likeable_id" = 3 LIMIT 1[0m  [["user_id", 1]]
+  Rendered layouts/shared/_like_status.html.erb (9.0ms)
+  [1m[35m (1.3ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?  [["commentable_id", 3], ["commentable_type", "Item"]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (10.6ms)
+  Rendered items/_comments.html.erb (89.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = ('tags'))  [["taggable_id", 2], ["taggable_type", "Item"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?[0m  [["likeable_id", 2], ["likeable_type", "Item"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?  [["likeable_id", 2], ["likeable_type", "Item"]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = 'Item' AND "likes"."likeable_id" = 2 LIMIT 1[0m  [["user_id", 1]]
+  Rendered layouts/shared/_like_status.html.erb (8.9ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?  [["commentable_id", 2], ["commentable_type", "Item"]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (6.3ms)
+  Rendered items/_comments.html.erb (15.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = ('tags'))  [["taggable_id", 1], ["taggable_type", "Item"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Item"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?  [["likeable_id", 1], ["likeable_type", "Item"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."likeable_id" = ? AND "likes"."likeable_type" = ?[0m  [["likeable_id", 1], ["likeable_type", "Item"]]
+  [1m[35mLike Load (0.9ms)[0m  SELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = 'Item' AND "likes"."likeable_id" = 1 LIMIT 1  [["user_id", 1]]
+  Rendered layouts/shared/_like_status.html.erb (8.1ms)
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Item"]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (6.3ms)
+  Rendered items/_comments.html.erb (16.4ms)
+  Rendered items/_item.html.erb (709.8ms)
+  Rendered items/index.html.erb within layouts/two_columns (828.6ms)
+  Rendered layouts/shared/_whose_items.html.erb (0.6ms)
+  Rendered layouts/shared/_which_community.html.erb (0.9ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?  [["following_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered communities/_form_for_widget.html.erb (35.0ms)
+  Rendered layouts/shared/_my_communities.html.erb (125.5ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/shared/_my_posts.html.erb (34.1ms)
+  Rendered layouts/shared/_sidebar.html.erb (199.0ms)
+  Rendered layouts/shared/_navbar.html.erb (3.1ms)
+  Rendered layouts/shared/_footer.html.erb (0.4ms)
+  Rendered layouts/application.html.erb (1261.1ms)
+Completed 200 OK in 2553ms (Views: 2292.6ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.button.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.slider.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:03 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/jquery.ui.base.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/jquery.ui.all.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/slimbox2.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/token-input.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/token-input-facebook.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/comments.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/communities.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/customized.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/ie.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/items.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/screen.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:04 +0000
+
+
+Started GET "/assets/token-input-mac.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/summernote.css?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:05 +0000
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:06 +0000
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:07 +0000
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/slimbox2.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/jquery.pageless.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:08 +0000
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/jquery.tokeninput.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:12 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/global.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/communities.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/comments.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/items.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/application.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/summernote.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:16:13 +0000
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:16:14 +0000
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 183.98.150.213 at 2013-09-08 13:16:14 +0000
+
+
+Started GET "/assets/load1.gif" for 183.98.150.213 at 2013-09-08 13:16:14 +0000
+
+
+Started GET "/items/new" for 183.98.150.213 at 2013-09-08 13:16:18 +0000
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered items/_form.html.erb (42.0ms)
+  Rendered items/new.html.erb within layouts/two_columns (43.8ms)
+  Rendered layouts/shared/_whose_items.html.erb (0.6ms)
+  Rendered layouts/shared/_which_community.html.erb (0.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?  [["following_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered communities/_form_for_widget.html.erb (5.4ms)
+  Rendered layouts/shared/_my_communities.html.erb (18.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/shared/_my_posts.html.erb (36.6ms)
+  Rendered layouts/shared/_sidebar.html.erb (69.0ms)
+  Rendered layouts/shared/_navbar.html.erb (2.5ms)
+  Rendered layouts/shared/_footer.html.erb (0.3ms)
+  Rendered layouts/application.html.erb (188.3ms)
+Completed 200 OK in 324ms (Views: 316.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:16:19 +0000
+
+
+Started GET "/items/new" for 183.98.150.213 at 2013-09-08 13:42:00 +0000
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered items/_form.html.erb (39.6ms)
+  Rendered items/new.html.erb within layouts/two_columns (49.7ms)
+  Rendered layouts/shared/_whose_items.html.erb (0.1ms)
+  Rendered layouts/shared/_which_community.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?  [["following_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered communities/_form_for_widget.html.erb (12.4ms)
+  Rendered layouts/shared/_my_communities.html.erb (143.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/shared/_my_posts.html.erb (56.7ms)
+  Rendered layouts/shared/_sidebar.html.erb (219.8ms)
+  Rendered layouts/shared/_navbar.html.erb (1.3ms)
+  Rendered layouts/shared/_footer.html.erb (0.1ms)
+  Rendered layouts/application.html.erb (175.1ms)
+Completed 200 OK in 466ms (Views: 451.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.button.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.slider.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.all.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.base.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/slimbox2.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/summernote.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/token-input.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/comments.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/token-input-facebook.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/communities.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:01 +0000
+
+
+Started GET "/assets/customized.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/ie.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/screen.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/items.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/token-input-mac.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:02 +0000
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/slimbox2.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/jquery.pageless.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:03 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/jquery.tokeninput.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/summernote.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/comments.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/communities.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/global.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/items.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/application.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 183.98.150.213 at 2013-09-08 13:42:04 +0000
+
+
+Started GET "/items/new" for 183.98.150.213 at 2013-09-08 13:42:13 +0000
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered items/_form.html.erb (37.0ms)
+  Rendered items/new.html.erb within layouts/two_columns (39.4ms)
+  Rendered layouts/shared/_whose_items.html.erb (0.1ms)
+  Rendered layouts/shared/_which_community.html.erb (0.1ms)
+  [1m[35m (4.8ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?  [["following_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered communities/_form_for_widget.html.erb (10.9ms)
+  Rendered layouts/shared/_my_communities.html.erb (22.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/shared/_my_posts.html.erb (40.5ms)
+  Rendered layouts/shared/_sidebar.html.erb (90.5ms)
+  Rendered layouts/shared/_navbar.html.erb (1.7ms)
+  Rendered layouts/shared/_footer.html.erb (0.1ms)
+  Rendered layouts/application.html.erb (196.2ms)
+Completed 200 OK in 347ms (Views: 336.2ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:13 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:13 +0000
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:13 +0000
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:13 +0000
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:13 +0000
+
+
+Started GET "/assets/jquery.ui.button.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.slider.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.base.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.ui.all.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/summernote.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/slimbox2.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/token-input.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/token-input-facebook.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/comments.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/communities.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/customized.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/ie.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/items.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/screen.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:14 +0000
+
+
+Started GET "/assets/token-input-mac.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:15 +0000
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/slimbox2.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.pageless.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/jquery.tokeninput.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/summernote.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:16 +0000
+
+
+Started GET "/assets/comments.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/communities.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/global.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/application.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/items.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:42:17 +0000
+
+
+Started GET "/items/new" for 183.98.150.213 at 2013-09-08 13:42:20 +0000
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered items/_form.html.erb (23.8ms)
+  Rendered items/new.html.erb within layouts/two_columns (25.1ms)
+  Rendered layouts/shared/_whose_items.html.erb (0.1ms)
+  Rendered layouts/shared/_which_community.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?  [["following_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "communities" INNER JOIN "associates" ON "communities"."id" = "associates"."community_id" WHERE "associates"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered communities/_form_for_widget.html.erb (4.3ms)
+  Rendered layouts/shared/_my_communities.html.erb (9.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/shared/_my_posts.html.erb (16.4ms)
+  Rendered layouts/shared/_sidebar.html.erb (34.2ms)
+  Rendered layouts/shared/_navbar.html.erb (1.6ms)
+  Rendered layouts/shared/_footer.html.erb (0.1ms)
+  Rendered layouts/application.html.erb (162.0ms)
+Completed 200 OK in 236ms (Views: 228.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:20 +0000
+
+
+Started GET "/assets/application.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.button.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.slider.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.base.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.ui.all.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/slimbox2.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/summernote.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/token-input.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/comments.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/token-input-facebook.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/communities.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/customized.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/ie.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/screen.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/items.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:21 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/token-input-mac.css?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:22 +0000
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/slimbox2.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/jquery.pageless.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:23 +0000
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/jquery.tokeninput.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/summernote.min.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/bootstrap-tagsinput.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/comments.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/communities.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/global.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/items.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/application.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:42:24 +0000
+
+
+Started GET "/assets/favicon.ico" for 183.98.150.213 at 2013-09-08 13:42:25 +0000

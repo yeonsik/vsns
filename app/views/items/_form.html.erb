@@ -19,7 +19,7 @@
       <%= f.input :description, input_html:{class: 'summernote span12', rows:5} %>
       <div class='row-fluid'>
         <div class="span12">
-        <%= f.input :tag_list, input_html:{class: 'span12', data:{role:'tagsinput'}} %>
+        <%= f.input :tag_list, input_html: { data: { tags: @item.tags } } %>
         </div>
       </div>
     </div>
