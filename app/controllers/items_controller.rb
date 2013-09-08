@@ -92,6 +92,18 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /items/tags
+  def tags
+    @tags = Item.tag_counts
+
+    @tags = @tags.where('name LIKE ?', "%#{params[:q]}%") if params[:q]
+    @tags = @tags.limit(10)
+
+    respond_to do |format|
+      format.json { render json: @tags}
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
