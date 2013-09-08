@@ -58,5 +58,5 @@ initTagInput = ->
 $ ->
   initTagInput()
 
-  $(document).on 'page:load', ->
-    initTagInput()
+  #$(document).on 'page:load', ->
+  #  initTagInput()
