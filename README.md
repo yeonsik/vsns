@@ -3,7 +3,11 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
-#### 2013년 9월 8일 => master branch에서 작업한 내용 (yeonsik)
+#### 2013년 9월 9일 => (아장아장 유닛) yeonsik/master branch를 머지하고 refactoring함.
+
+* commnities.html.erb와 _community.html.erb 파일을 refactoring하였습니다.
+
+#### 2013년 9월 8일 => (아장아장 유닛) master branch에서 작업한 내용 (yeonsik)
 
 * item글 업로드할 때 아무것도 입력하지 않고 Save하면 @communities_joined가 nil로 발생하는 버그를 수정했습니다.
 
