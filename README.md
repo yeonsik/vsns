@@ -26,6 +26,12 @@ vsns
   * local 개발 환경에서 ENV 를 rails server 에서 사용할 수 있도록 해줌
   * project_root/.env 파일을 만들어 사용
   * example vsns/.env
+
+```
+GITHUB_KEY=github에서 발급받은 app의 key
+GITHUB_SECRET=github에서 발급받은 app의 secret
+```
+
 * app/asset/stylesheet.css.scss
   * Tag count 에 따라 적용될 스타일 시트 정의
 * app/view/layout/shared/_sidebar.html.erb
@@ -36,10 +42,6 @@ vsns
   * owned_my_tag_counts 메소드 추가
   * acts_as_taggable_on이 기본적으로 모든 아이템의 Tag 를 기준으로 Cloud 생성하는 것을 특정 유저 기준으로 변경
 
-```
-GITHUB_KEY=github에서 발급받은 app의 key
-GITHUB_SECRET=github에서 발급받은 app의 secret
-```
 
 * 특이사항
   * 로컬 환경에서 github로 login을 테스트하기 위해 .env파일에 해당 정보를 세팅해줘야 함
