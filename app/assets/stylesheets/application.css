@@ -14,5 +14,7 @@
  *= require bootstrap_and_overrides
  *= require summernote
  *= require bootstrap-tagsinput
+ *= require token-input
+ *= require token-input-facebook
  *= require_tree .
  */

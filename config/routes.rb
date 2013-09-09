@@ -21,6 +21,9 @@ BigPie::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :items do
     resources :comments
+    collection do
+      get 'tags'
+    end
   end
   devise_for :users
   resources :users do
