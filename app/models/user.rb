@@ -17,6 +17,8 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  avatar                 :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
 #
 
 ###############################################################################
@@ -76,12 +78,49 @@ class User < ActiveRecord::Base
   has_many :communities_owned_by_me, class_name: 'Community', 
            foreign_key: :owner_id
 
+
+  # Class methods
+  # -------------
+  def self.from_omniauth(auth, signed_in_resource=nil)
+    find_or_create_by(provider: auth[:provider], uid: auth[:uid]) do |user|
+      user.provider           = auth.provider
+      user.uid                = auth.uid
+      user.email              = auth.info.email
+      user.username           = auth.info.nickname
+      user.remote_avatar_url  = auth.info.image
+      user.password           = Devise.friendly_token[0, 20]
+    end
+  end
+
+  def self.new_with_session(params, session)
+    if session['devise.user_attributes']
+      new(session['devise.user_attributes']) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+
 ###############################################################################
 ##
 ##   Definitions of Method      
 ##
 ###############################################################################
-   
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
   # Associate-Community Model
   # Methods: join!, leave!
   def join!(community)
