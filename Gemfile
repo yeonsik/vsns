@@ -44,7 +44,13 @@ end
 
 # commented out by hschoi due to incompatibility to summernote-rails
 # gem 'flatui-rails'
-gem 'summernote-rails'
+# gem 'summernote-rails'
+
+gem 'wmd-rails'
+
+# gem "markdown-rails"
+# gem "redcarpet"
+# gem "pygments.rb"
 
 gem 'slimbox2-rails'
 

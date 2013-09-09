@@ -23,5 +23,8 @@ module BigPie
       g.stylesheets false
       g.javascripts false
     end
+
+    config.assets.precompile += %w(editor.js editor.css)
+    
   end
 end

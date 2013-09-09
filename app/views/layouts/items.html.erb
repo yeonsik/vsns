@@ -1,5 +1,6 @@
 <%= content_for :head do %>
-  <%= javascript_include_tag 'editor' %>
+  <%= javascript_include_tag 'editor' if action_name.in?(['new','edit']) %>
+  <%= stylesheet_link_tag 'editor' if action_name.in?(['new','edit']) %>
 <% end %>
 
 <%= render template: "layouts/two_columns" %>
