@@ -77,6 +77,8 @@ gem 'acts-as-taggable-on'
 # Replace gem 'tagsinput-rails' with the following one for Bootstrap
 gem 'bootstrap-tagsinput-rails'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :development do
 
   # Use sqlite3 as the database for Active Record
