@@ -25,6 +25,7 @@ vsns
   * local 개발 환경에서 ENV 를 rails server 에서 사용할 수 있도록 해줌
   * project_root/.env 파일을 만들어 사용
   * example vsns/.env
+
 ```
 GITHUB_KEY=github에서 발급받은 app의 key
 GITHUB_SECRET=github에서 발급받은 app의 secret
@@ -34,6 +35,8 @@ GITHUB_SECRET=github에서 발급받은 app의 secret
   * 로컬 환경에서 github로 login을 테스트하기 위해 .env파일에 해당 정보를 세팅해줘야 함
   * .env 파일은 보안상 gitignore에서 제외시킴
   * heroku deploy 시에 GITHUB_KEY와 GITHUB_SECRET을 ENV로 설정해줘야함
+
+***
 
 
 #### 2013년 9월 9일 => (아장아장 유닛) yeonsik/master branch를 머지하고 refactoring함.
