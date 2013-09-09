@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   include Authority::Abilities
 
   # Taggable module method, calls acts_as_taggable_on :tags 
-  acts_as_taggable  
+  acts_as_taggable
 
   # :photo attrbute connect to Carrierwave Uploader
   mount_uploader :photo, PhotoUploader
@@ -53,5 +53,4 @@ class Item < ActiveRecord::Base
   def check_remote_photo_url
     self.remote_photo_url.blank?
   end
-
 end
