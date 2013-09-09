@@ -5,6 +5,7 @@ vsns
 
 #### 2013년 9월 9일 => Confidence 유닛 작업내용
 * omniauth, omniauth-github를 사용해 Github로 로그인하기 기능 추가
+* act_as_taggable_on 를 사용해 Tagcloud 기능을 사이브에 추가
 
 ##### 관련파일
 * config/initializers/devise.rb
@@ -25,6 +26,15 @@ vsns
   * local 개발 환경에서 ENV 를 rails server 에서 사용할 수 있도록 해줌
   * project_root/.env 파일을 만들어 사용
   * example vsns/.env
+* app/asset/stylesheet.css.scss
+  * Tag count 에 따라 적용될 스타일 시트 정의
+* app/view/layout/shared/_sidebar.html.erb
+  * Tag cloud 가 노출될 layer 추가
+* app/view/layout/shared/_my_tag_cloud.html.erb
+  * acts_as_taggable_on에서 제공하는 tag_cloud 헬퍼 메소드를 활용
+* app/model/user.rb
+  * owned_my_tag_counts 메소드 추가
+  * acts_as_taggable_on이 기본적으로 모든 아이템의 Tag 를 기준으로 Cloud 생성하는 것을 특정 유저 기준으로 변경
 
 ```
 GITHUB_KEY=github에서 발급받은 app의 key
