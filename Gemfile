@@ -58,6 +58,8 @@ gem 'rmagick'
 
 # for Authentication and Authorization
 gem 'devise'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 #gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'authority'
 gem 'rolify'
@@ -80,6 +82,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'quiet_assets'
 end
 
 group :production do
