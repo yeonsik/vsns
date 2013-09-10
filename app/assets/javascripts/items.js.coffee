@@ -23,3 +23,5 @@ initTagInput = ->
 $ ->
   initTagInput()
 
+# Turbolink 이벤트를 통한 처리
+$(document).on 'page:load', initTagInput

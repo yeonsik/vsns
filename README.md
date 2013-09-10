@@ -3,6 +3,59 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 10일 => 아장아장 유닛 작업내용
+
+* wmd editor의 turbolinks 문제를 이준헌님의 도움을 받아 깔끔하게 해결하였음(editor.js)
+
+    ```
+    //= require wmd/wmd
+    //= require wmd/showdown
+
+    var initializeWMDEditor = function () {
+      new WMDEditor({
+        input: "item_description",
+        button_bar: "editor-button-bar",
+        preview: "editor-preview",
+        output: "editor-output"
+      });
+
+      $(".wmd-help-button").html("<a id='markdown-help-link'></a>");
+
+      $("#markdown-help-link").click(function(){
+        $("#editor-help-panel").slideToggle('fast');
+
+        return false;
+      });
+    };
+
+    $(function () { // dom ready
+      initializeWMDEditor();
+    });
+
+    // Turbolink 이벤트를 통한 처리
+    $(document).on('page:load', initializeWMDEditor);
+    ```
+
+* 이와 함께 jquery.tokeninput.js 역시 turbolinks 문제도 해결하였음(items.js.coffee).
+
+    ```
+    initTagInput = ->
+      $tagInput = $('input[name="item[tag_list]"]')
+
+      $tagInput.tokenInput "/items/tags.json",
+        theme             : 'facebook'
+        tokenValue        : 'name'
+        allowFreeTagging  : true
+        prePopulate       : $tagInput.data('tags')
+
+    $ ->
+      initTagInput()
+
+    # Turbolink 이벤트를 통한 처리
+    $(document).on 'page:load', initTagInput
+    ```
+
+
 #### 2013년 9월 9일 => Confidence 유닛 작업내용
 * omniauth, omniauth-github를 사용해 Github로 로그인하기 기능 추가
 * act_as_taggable_on 를 사용해 Tagcloud 기능을 사이브에 추가
