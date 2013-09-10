@@ -20,3 +20,5 @@
 
 .idea/**/*
 
+# Ignore environment variables settings for development & test group
+.env

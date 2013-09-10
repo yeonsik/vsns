@@ -28,6 +28,11 @@
             <li><%= link_to raw("<i class='icon-signout'></i> Sign Out"), destroy_user_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to raw("<i class='icon-signin'></i> Sign In"), new_user_session_path  %></li>
+            <li>
+              <%= link_to user_omniauth_authorize_path(:github) do %>
+                <i class="icon-github"></i> Sign in with Github
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->
