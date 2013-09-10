@@ -25,9 +25,9 @@
                 <li><%= link_to "Account", edit_user_registration_path %></li>
               </ul>
             </li>
-            <li><%= link_to raw("<i class='icon-signout'></i> Sign Out"), destroy_user_session_path, :method => :delete %></li>
+            <li><%= link_to raw("<i class='icon-signout'></i> Logout"), destroy_user_session_path, :method => :delete %></li>
           <% else %>
-            <li><%= link_to raw("<i class='icon-signin'></i> Sign In"), new_user_session_path  %></li>
+            <li><%= link_to raw("<i class='icon-signin'></i> Login"), new_user_session_path  %></li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->

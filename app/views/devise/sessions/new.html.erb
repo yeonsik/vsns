@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<h2>Login</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class:'form-horizontal'}) do |f| %>
   <div class="form-inputs">
@@ -11,10 +11,10 @@
       <div class="span6">
       <%- if devise_mapping.omniauthable? %>
         <p>
-          <strong>Or sign in with:</strong>
+          <strong>Or login with:</strong>
         </p>
         <%- resource_class.omniauth_providers.each do |provider| %>
-          <p><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :class => "btn" %></p>
+          <p><%= link_to "Login with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :class => "btn" %></p>
         <% end -%>
       <% end -%>
       </div>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
+    <%= f.button :submit, "Login" %>
   </div>
 <% end %>
 

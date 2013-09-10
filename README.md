@@ -3,6 +3,21 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 10일 => subicura 작업한 내용
+
+  * facebook 프로필 이미지 정보를 가지고와서 최초 계정생성시 사용
+  * devise에서 기본 제공하는 로그인화면(_links.erb)를 수정하여 로그인 폼을 변경
+  * vsns_config.yml을 설정파일로 사용 (ENV형식의 단점 보완)
+  * vsns_config.yml은 추후 ignore해야함
+
+
+#### 2013년 9월 9일 => subicura 작업한 내용
+
+  * devise와 omniauth를 이용하여 twitter/facebook 로그인 연동
+  * 기존에 있던 username column을 그대로 활용하여 "사용자이름"으로 사용 (unique)
+  * email을 보여주던 화면을 username으로 바꿈
+  * email을 수정하지 못하도록함 (login id 이므로..)
+
 
 #### 2013년 9월 6일 => master branch에서 작업한 내용
 
