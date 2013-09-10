@@ -3,6 +3,54 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 9일 => Confidence 유닛 작업내용
+* omniauth, omniauth-github를 사용해 Github로 로그인하기 기능 추가
+* act_as_taggable_on 를 사용해 Tagcloud 기능을 사이브에 추가
+
+##### 관련파일
+* config/initializers/devise.rb
+  * ```config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'user,public_repo'```
+* app/controllers/omniauth_callbacks.rb
+  * Github oauth callback용
+* 회원가입, 회원정보 수정 뷰 수정
+  * Github oauth 시 password 필드 제외처리
+* 상단 네비게이션 바 Github로 로그인 링크 추가
+* app/models/user.rb
+  * omniauth 관련 설정 및 클래스 & 인스턴스 메소드 추가
+  * omniauth를 통해 들어온 user thumbnail을 저장하도록 구현
+* development 환경 annotate gem 추가
+  * 각 model에 table schema 정보 comment로 추가해주는 gem
+  * 참고 링크 : [annotate_models](https://github.com/ctran/annotate_models)
+* development & test 환경 dotenv-rails gem 추가
+  * 참고 링크 : [dotenv](https://github.com/bkeepers/dotenv)
+  * local 개발 환경에서 ENV 를 rails server 에서 사용할 수 있도록 해줌
+  * project_root/.env 파일을 만들어 사용
+  * example vsns/.env
+
+```
+GITHUB_KEY=github에서 발급받은 app의 key
+GITHUB_SECRET=github에서 발급받은 app의 secret
+```
+
+* app/asset/stylesheet.css.scss
+  * Tag count 에 따라 적용될 스타일 시트 정의
+* app/view/layout/shared/_sidebar.html.erb
+  * Tag cloud 가 노출될 layer 추가
+* app/view/layout/shared/_my_tag_cloud.html.erb
+  * acts_as_taggable_on에서 제공하는 tag_cloud 헬퍼 메소드를 활용
+* app/model/user.rb
+  * owned_my_tag_counts 메소드 추가
+  * acts_as_taggable_on이 기본적으로 모든 아이템의 Tag 를 기준으로 Cloud 생성하는 것을 특정 유저 기준으로 변경
+
+
+* 특이사항
+  * 로컬 환경에서 github로 login을 테스트하기 위해 .env파일에 해당 정보를 세팅해줘야 함
+  * .env 파일은 보안상 gitignore에서 제외시킴
+  * heroku deploy 시에 GITHUB_KEY와 GITHUB_SECRET을 ENV로 설정해줘야함
+
+***
+
+
 #### 2013년 9월 9일 => (아장아장 유닛) yeonsik/master branch를 머지하고 refactoring함.
 
 * commnities.html.erb와 _community.html.erb 파일을 refactoring하였습니다.

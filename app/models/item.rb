@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  photo        :string(255)
+#  url_ref      :string(255)
+#  description  :text(255)
+#  starts_count :integer          default(0)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  likes_count  :integer          default(0)
+#
+
 ###############################################################################
 #
 #   Item Model Class      
@@ -15,7 +30,7 @@ class Item < ActiveRecord::Base
   include Authority::Abilities
 
   # Taggable module method, calls acts_as_taggable_on :tags 
-  acts_as_taggable  
+  acts_as_taggable
 
   # :photo attrbute connect to Carrierwave Uploader
   mount_uploader :photo, PhotoUploader
@@ -53,5 +68,4 @@ class Item < ActiveRecord::Base
   def check_remote_photo_url
     self.remote_photo_url.blank?
   end
-
 end

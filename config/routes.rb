@@ -19,13 +19,16 @@ BigPie::Application.routes.draw do
   resources :communities
 
   resources :relationships, only: [:create, :destroy]
+
   resources :items do
     resources :comments
     collection do
       get 'tags'
     end
   end
-  devise_for :users
+
+  devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
+
   resources :users do
     member do
       get :followings, :followers
