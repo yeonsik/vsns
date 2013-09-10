@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index]
-  before_filter :set_communities_joined, only: [:index, :show, :edit, :new]
+  before_filter :set_communities_joined, only: [:index, :show, :edit, :new, :update, :create]
 
   layout 'two_columns'
 
@@ -90,6 +90,18 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { head :no_content }
+    end
+  end
+  
+  # GET /items/tags
+  def tags
+    @tags = Item.tag_counts
+
+    @tags = @tags.where('name LIKE ?', "%#{params[:q]}%") if params[:q]
+    @tags = @tags.limit(10)
+
+    respond_to do |format|
+      format.json { render json: @tags}
     end
   end
 

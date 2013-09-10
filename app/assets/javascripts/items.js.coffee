@@ -45,3 +45,18 @@ $ ->
     # alert $('#post_content').code()[0]
     summer_note.val summer_note.code()[0]
     true
+    
+initTagInput = ->
+  $tagInput = $('input[name="item[tag_list]"]')
+
+  $tagInput.tokenInput "/items/tags.json",
+    theme             : 'facebook'
+    tokenValue        : 'name'
+    allowFreeTagging  : true
+    prePopulate       : $tagInput.data('tags')
+
+$ ->
+  initTagInput()
+
+  #$(document).on 'page:load', ->
+  #  initTagInput()

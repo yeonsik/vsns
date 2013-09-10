@@ -2,7 +2,7 @@
 <div id='my_communities' class='well'>
   <ol>
     <!--TODO: to refactor the following erb code line to use partial template...-->
-    <%=raw @communities.map {|community|list_of_communities(community)}.join() %>
-    <%#= render @communities %>
+    <%#=raw @communities.map {|community|markup_community(community)}.join() %>
+    <%= render @communities %>
   </ol>
 </div>

@@ -20,6 +20,7 @@
 //= require slimbox2.min
 //= require jquery.pageless
 //= require twitter/bootstrap
+//= require jquery.tokeninput
 //= require summernote.min
 //= require bootstrap-tagsinput
 //= require_tree .
