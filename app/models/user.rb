@@ -32,8 +32,6 @@ class User < ActiveRecord::Base
   # Adds `can_create?(resource)`, etc
   include Authority::UserAbilities
 
-  include ActsAsTaggableOn
-
   # Associate User to Role Model (with Rolify Gem)
   # You should resourcify some model you want to grant 
   rolify
@@ -165,10 +163,9 @@ class User < ActiveRecord::Base
   end
 
   def owned_my_tag_counts
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-      joins(:taggings).group("taggings.tag_id").
-      joins('INNER JOIN items ON items.id = taggings.taggable_id').
-      joins('INNER JOIN users ON users.id = items.user_id').where('users.email' => self.email)
+    # items.tag_counts 은 Rails 4 의 relation 상에서 오류가남
+    # acts_as_taggable_on 이 업데이트 되기 전까지 다음과 같이 사용
+    Item.where(user_id: self.id).tag_counts
   end
 
 end
