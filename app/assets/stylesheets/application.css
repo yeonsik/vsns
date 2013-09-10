@@ -12,11 +12,15 @@
  *= require jquery.ui.all
  *= require slimbox2
  *= require bootstrap_and_overrides
- *= require summernote
  *= require bootstrap-tagsinput
  *= require token-input
  *= require token-input-facebook
- *= require_tree .
+ *= require items
+ *= require comments
+ *= require communities
+ *= require customized
+ *= require ie
+ *= require screen
  */
 
 

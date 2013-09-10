@@ -3,6 +3,59 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 10일 => 아장아장 유닛 작업내용
+
+* wmd editor의 turbolinks 문제를 이준헌님의 도움을 받아 깔끔하게 해결하였음(editor.js)
+
+    ```
+    //= require wmd/wmd
+    //= require wmd/showdown
+
+    var initializeWMDEditor = function () {
+      new WMDEditor({
+        input: "item_description",
+        button_bar: "editor-button-bar",
+        preview: "editor-preview",
+        output: "editor-output"
+      });
+
+      $(".wmd-help-button").html("<a id='markdown-help-link'></a>");
+
+      $("#markdown-help-link").click(function(){
+        $("#editor-help-panel").slideToggle('fast');
+
+        return false;
+      });
+    };
+
+    $(function () { // dom ready
+      initializeWMDEditor();
+    });
+
+    // Turbolink 이벤트를 통한 처리
+    $(document).on('page:load', initializeWMDEditor);
+    ```
+
+* 이와 함께 jquery.tokeninput.js 역시 turbolinks 문제도 해결하였음(items.js.coffee).
+
+    ```
+    initTagInput = ->
+      $tagInput = $('input[name="item[tag_list]"]')
+
+      $tagInput.tokenInput "/items/tags.json",
+        theme             : 'facebook'
+        tokenValue        : 'name'
+        allowFreeTagging  : true
+        prePopulate       : $tagInput.data('tags')
+
+    $ ->
+      initTagInput()
+
+    # Turbolink 이벤트를 통한 처리
+    $(document).on 'page:load', initTagInput
+    ```
+
+
 #### 2013년 9월 9일 => Confidence 유닛 작업내용
 * omniauth, omniauth-github를 사용해 Github로 로그인하기 기능 추가
 * act_as_taggable_on 를 사용해 Tagcloud 기능을 사이브에 추가
@@ -27,10 +80,10 @@ vsns
   * project_root/.env 파일을 만들어 사용
   * example vsns/.env
 
-```
-GITHUB_KEY=github에서 발급받은 app의 key
-GITHUB_SECRET=github에서 발급받은 app의 secret
-```
+      ```
+      GITHUB_KEY=github에서 발급받은 app의 key
+      GITHUB_SECRET=github에서 발급받은 app의 secret
+      ```
 
 * app/asset/stylesheet.css.scss
   * Tag count 에 따라 적용될 스타일 시트 정의
@@ -51,6 +104,18 @@ GITHUB_SECRET=github에서 발급받은 app의 secret
 ***
 
 
+#### 2013년 9월 9일 (#2) => origin wmd_editor branch에 추가한 내용
+
+  * summernote-rails 젬을 wmd-rails 젬으로 대체하였습니다.  
+  * wmd-rails 젬은 wmd 마크다운 에디터를 assets pipeline에서 쉽게 사용할 수 있도록 젬으로 만든 것입니다.  
+  * wmd-rails 젬을 사용할 때의 주의점은 wmd/wmd.js 파일내의 WMDEditor 객체는 editor-input 속성으로 지정된 DOM 객체가 없는 경우 스크립트 에러를 발생합니다. 따라서 폼 뷰 템플릿에서만 wmd/wmd.js 파일을 포함해야 한다는 것입니다. 따라서 items 컨트롤러 전용 레이아웃 파일인 items.html.erb 파일을 만들었고, 여기에 editor.js 와 editor.css 파일을 포함하도록 하였습니다.   
+  * items의 show 뷰 템플릿에서는 마크다운 컨텐츠를 보여주기 위해 wmd/showdown.js 파일을 사용합니다. 따라서 이 자바스크립트 파일은 application.js manifest 파일에 포함해 주었습니다.  
+  * 이러한 조치를 취하기 위해서는 manifest 파일(applicaiton.js, application.css) 파일내의 `require_tree . ` 라인을 제거하고 필요로 하는 모든 파일을 명시적으로 포함해야 합니다. 이와 연관하여 editor.js와 editor.css 파일을 precompile 시에 포함시키기 위해서 아래와 같이 application.rb 파일에 코드라인을 추가해 주어야 합니다. 
+
+    ```
+    config.assets.precompile += %w(editor.js editor.css)
+    ```
+
 #### 2013년 9월 9일 => (아장아장 유닛) yeonsik/master branch를 머지하고 refactoring함.
 
 * commnities.html.erb와 _community.html.erb 파일을 refactoring하였습니다.
@@ -64,6 +129,12 @@ GITHUB_SECRET=github에서 발급받은 app의 secret
 * 태그 입력시에 자동완성이 되도록 개선하였습니다.
 
   Dev Rulu팀에서 사용했던 기능으로써 jquery.tokeninput.js 외 js, css파일들을 이용하였습니다.
+
+#### 2013년 9월 7일 => summernote 에디터(위지위그 에디터)를 wmd editor(마크다운 에디터)로 교체
+
+* items 컨트롤러의 form 뷰에서는 `description` 속성에 대해서 현재 summernote 위지위그 에디터를 사용하여 글을 작성하도록 구현되어 있습니다. 
+
+* 이것을 마크다운 에디터인 `wmd` 에디터로 교체하여 구현해 보았습니다. 이것은 `아장아장` 유닛 미션 중에 하나로 제가 별도로 구현한 것은 `wmd_editor`라는 branch를 만들어 push해 놓았습니다. 
 
 #### 2013년 9월 6일 => master branch에서 작업한 내용
 

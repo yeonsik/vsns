@@ -1,0 +1,147 @@
+<h4>링크</h4>
+
+<p>In most cases, a plain URL will be recognized as such and automatically linked:</p>
+<pre><code>Visit http://area51.stackexchange.com/ regularly!
+Use angle brackets to force linking: Have you seen <http://superuser.com>?
+</code></pre>
+<p>To create fancier links, use Markdown:</p>
+<pre><code>Here's [a link](http://www.example.com/)! And a reference-style link to [a panda][1].
+References don't have to be [numbers][question].
+
+ [1]: http://notfound.stackexchange.com/
+ [question]: http://english.stackexchange.com/questions/11481
+</code></pre>
+<p>You can add tooltips to links:</p>
+<pre><code>Click [here](http://diy.stackexchange.com "this text appears when you mouse over")!
+This works with [reference links][blog] as well.
+
+ [blog]: http://blog.stackoverflow.com/ "click here for updates"
+</code></pre>
+
+<h4>이미지</h4>
+
+<p>Images are exactly like links, but they have an exclamation point in front of them:</p>
+<pre><code>![a busy cat](http://sstatic.net/stackoverflow/img/error-lolcat-problemz.jpg)
+![two muppets][1]
+
+ [1]: http://i.imgur.com/I5DFV.jpg "tooltip"
+</code></pre>
+<p>The word in square brackets is the alt text, which gets displayed if the browser can't show the image. Be sure to include meaningful alt text for screen-reading software.
+
+<h4>스타일링과 헤더</h4>
+
+<p>Be sure to use text styling sparingly; only where it helps readability.</p>
+
+<pre><code>*This is italicized*, and so
+is _this_.
+
+**This is bold**, just like __this__.
+
+You can ***combine*** them
+if you ___really have to___.</code></pre>
+
+<p>To break your text into sections, you can use headers:</p>
+
+<pre><code>A Large Header
+==============
+
+Smaller Subheader
+-----------------
+</code></pre>
+
+<p>Use hash marks if you need several levels of headers:</p>
+
+<pre><code># Header 1 #
+## Header 2 ##
+### Header 3 ###
+</code></pre>
+
+<h4>리스트</h4>
+
+<p>Both bulleted and numbered lists are possible:</p>
+
+<pre><code>-<span class='spaces'> </span>Use a minus sign for a bullet
++<span class='spaces'> </span>Or plus sign
+*<span class='spaces'> </span>Or an asterisk
+
+1.<span class='spaces'> </span>Numbered lists are easy
+2.<span class='spaces'> </span>Markdown keeps track of
+  <span class='spaces'> </span>the numbers for you
+7.<span class='spaces'> </span>So this will be item 3.
+</code></pre>
+
+<pre><code>1.<span class='spaces'> </span>Lists in a list item:
+<span class='spaces'>    </span>-<span class='spaces'> </span>Indented four spaces.
+<span class='spaces'>         </span>*<span class='spaces'> </span>indented eight spaces.
+<span class='spaces'>    </span>-<span class='spaces'> </span>Four spaces again.
+2.<span class='spaces'>  </span>You can have multiple
+<span class='spaces'>    </span>paragraphs in a list items.
+<span class='spaces'> </span>
+<span class='spaces'>    </span>Just be sure to indent.
+</code></pre>  
+
+<h4>인용구</h4> 
+
+<pre><code>> Create a blockquote by
+> prepending “>” to each line.
+>
+> Other formatting also works here, e.g.
+>
+> 1. Lists or
+> 2. Headings:
+>
+> ## Quoted Heading ##
+</code></pre>
+
+<p>You can even put blockquotes in blockquotes:</p>
+<pre><code>> A standard blockquote is indented
+> > A nested blockquote is indented more
+> > > > You can nest to any depth. 
+</code></pre>
+
+<h4>코드입력</h4>
+
+<p>To create code blocks or other preformatted text, indent by four spaces:</p>
+
+<pre><code><span class='spaces'>    </span>This will be displayed in a monospaced font. The first four spaces
+<span class='spaces'>    </span>will be stripped off, but all other whitespace will be preserved.
+    
+<span class='spaces'>    </span>Markdown and HTML are turned off in code blocks:
+<span class='spaces'>    </span>&lt;i&gt;This is not italic&lt;/i&gt, and [this is not a link](http://example.com)
+</code></pre>
+
+<p>To create not a block, but an inline code span, use backticks:</p>
+
+<pre><code>The `$` character is just a shortcut for `window.jQuery`.</code></pre>
+
+<p>If you want to have a preformatted block within a list, indent by eight spaces:</p>
+
+<pre><code>1. This is normal text.
+2. So is this, but now follows a code block:
+<span class='spaces'> </span> 
+<span class='spaces'>        </span>Skip a line and indent eight spaces.
+<span class='spaces'>        </span>That's four spaces for the list
+<span class='spaces'>        </span>and four to trigger the code block.</code></pre>
+
+<h4>HTML태그</h4>
+
+<p>If you need to do something that Markdown can't handle, use HTML. Note that we only support a very strict subset of HTML!</p>
+
+<pre><code>Strikethrough humor is &lt;strike&gt;funny&lt;/strike&gt;.</code></pre>
+
+<p>Markdown is smart enough not to mangle your span-level HTML:</p>
+
+<pre><code>&lt;b&gt;Markdown works *fine* in here.&lt;/b&gt;</code></pre>
+
+<p>Block-level HTML elements have a few restrictions:</p>
+
+<ol>
+  <li>They must be separated from surrounding text by blank lines.</li>
+  <li>The begin and end tags of the outermost block element must not be indented.</li>
+  <li>Markdown can't be used within HTML blocks.</li>
+</ol>
+
+<pre><code>&lt;pre&gt;
+    You can &lt;em&gt;not&lt;/em&gt; use Markdown in here.
+&lt;/pre&gt;
+</code></pre>        
