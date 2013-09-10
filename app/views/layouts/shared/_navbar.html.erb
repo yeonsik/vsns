@@ -12,7 +12,7 @@
           <li class="<%= 'active' if controller_name == 'items' and action_name == 'index' and (params[:user_id].nil? or params[:user_id] != current_user.id.to_s)%>"><%= link_to raw('<i class="icon-home"></i> All'), items_path  %></li>
           <% if user_signed_in? %>
             <li class="<%= 'active' if controller_name == 'items' and action_name == 'index' and params[:user_id] == current_user.id.to_s %>"><%= link_to raw('<i class="icon-th-large"></i> My Items'), items_path(user_id: current_user.id )  %></li>
-            <li class="<%= 'active' if controller_name == 'communites' and action_name == 'index' %>"><%= link_to raw('<i class="icon-th-large"></i> My Communities'), my_communities_path(current_user.id )  %></li>
+            <li class="<%= 'active' if controller_name == 'users' and action_name == 'communities' %>"><%= link_to raw('<i class="icon-th-large"></i> My Communities'), my_communities_path(current_user.id )  %></li>
           <% end %>
           <li class="<%= 'active' if controller_name == 'items' and action_name == 'new' %>"><%= link_to '<i class="icon-plus"></i> New item'.html_safe, new_item_path  %></li>
         </ul>

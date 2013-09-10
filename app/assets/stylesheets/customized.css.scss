@@ -50,3 +50,8 @@ form {
 .just_be_added {
   border: 1px dashed green;
 }
+
+// Item 입력 폼에서 tag 자동완성 input의 폭을 100% 변경함. responsive에 대응하기 위해서...
+ul.token-input-list, ul.token-input-list-facebook, ul.token-input-list-mac {
+  width:100% !important;
+}
