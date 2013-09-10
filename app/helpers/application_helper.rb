@@ -23,4 +23,9 @@ module ApplicationHelper
     "<div style='text-align:left !important;'>#{emails_return}</div>"
   end
 
+
+  # def markdown(text)
+  #   markdown = Redcarpet::Markdown.new(PygmentsHTML, :gh_blockcode => true)
+  #   markdown.render(text).html_safe
+  # end
 end
