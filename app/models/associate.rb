@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: associates
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  community_id :integer
+#  access_type  :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 ###############################################################################
 #
 #   Associate Model Class      

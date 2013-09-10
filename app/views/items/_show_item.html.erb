@@ -5,10 +5,13 @@
   <div class='user'>
     <%= item.user.email %> (<%= time_ago_in_words(item.created_at)%> ago)
   </div>
-  <div class='description'>
-    <!--You should use 'raw' method in this context because item's description can include html tags.-->
-    <%=raw item.description %>
-  </div>
+  <div class='description' id='description'></div>
+
+  <%= javascript_tag defer: 'defer' do -%>
+    var converter = new Showdown.converter();
+    $("#description").html(converter.makeHtml("<%=j @item.description %>"));
+  <% end -%>
+
   <div class='tag_list' %>
     <i class="icon-tag"></i> Tags: <%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
   </div>
