@@ -26,7 +26,12 @@ $ ->
 # Turbolink 이벤트를 통한 처리
 $(document).on 'page:load', initTagInput
 
+
 initPageless = ->
   $('#items').pageless
+
 $ -> 
   initPageless()
+
+# Turbolink 이벤트를 통한 처리
+$(document).on 'page:load', initPageless
