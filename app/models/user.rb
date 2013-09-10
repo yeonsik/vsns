@@ -66,6 +66,9 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
+      logger.error "*"*20
+      logger.error auth.info.image
+      user.remote_avatar_url = auth.info.image
       user.provider = auth.provider
       user.uid = auth.uid
       user.username = auth.info.nickname
