@@ -1,0 +1,14 @@
+defaults: &DEFAULTS
+  omniauth_twitter_app_id: "WeV1bfC1LbKvfu7OkFrrrg"
+  omniauth_twitter_app_secret: "iByH0e3FHvAMWSh7Eqrum5hYFIErgJ2oOkJH7f3EtJ4"
+  omniauth_facebook_app_id: "1414279862128782"
+  omniauth_facebook_app_secret: "65756748bcbbb95c7936539c60b3251f"
+
+development:
+  <<: *DEFAULTS
+
+test:
+  <<: *DEFAULTS
+
+production:
+  <<: *DEFAULTS
