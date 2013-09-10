@@ -6,7 +6,7 @@
     <div class="form-inputs">
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.try(:id) }  %>
       <%= f.input :photo, as: :file  %>
-      <%= f.input :remote_photo_url, placeholder: '또는 이미지 주소를 입력하세요.', label: false, input_html:{class:'span12'} %>
+      <%= f.input :remote_photo_url, placeholder: '또는 이미지 주소를 입력하세요.', label: false, input_html: { class:'span12' } %>
       <% if @item.photo? %>
       <div class='row-fluid'>
         <div style='margin-bottom:1em;'>
