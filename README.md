@@ -5,21 +5,58 @@ vsns
 
 #### 2013년 9월 11일 => 아장아장 유닛 작업내용
 
-* Pageless jquery plugin이 turbolinks 문제로 제대로 작동되지 않았던 것을 해결하였음.
+* 이준헌님의 도움으로 pageless 기능 문제점 해결함
 
-  * items.js.coffee 파일에서 
+  in items/index.html
 
-    ```
-    initPageless = ->
-      $('#items').pageless
+  ```
+  <div id="items" 
+    data-total-pages="<%= @items.total_pages %>" 
+    data-url="<%= items_path %>"
+    data-loader-image="<%= image_path('load1.gif') %>"> 
+    <%= render @items %>
+  </div>
 
-    $ -> 
-      initPageless()
+  <!--To apply bottom-less pagination using pageless jQuery plugin-->
+  <!--Gem : pageless-rails & will_paginate-->
+  <%= will_paginate @items %>
+  ```
 
-    # Turbolink 이벤트를 통한 처리
-    $(document).on 'page:load', initPageless
+  in items.js.coffee
 
-    ``` 
+  ```
+  initPageless = ->
+    $items = $('#items')
+
+    # items dom 존재여부 확인
+    return unless $items.length
+
+    # pageless 설정정보 dom에서 가져오기
+    opts =
+      totalPages  : $items.data('total-pages')
+      url         : $items.data('url')
+      loaderMsg   : 'Loading more pages...'
+      loaderImage : $items.data('loader-image')
+
+    # pageless 시작
+    $items.pageless opts
+
+  # pageless 초기화
+  resetPageless = ->
+    $items = $('#items')
+
+    return unless $items.length
+
+    $.pagelessReset()
+
+
+  $ -> 
+    initPageless()
+
+  # Turbolink 이벤트를 통한 처리
+  $(document).on 'page:load', initPageless
+  $(document).on 'page:before-change', resetPageless # 화면 전환전 pageless 초기화
+  ```  
 
 ***
 
