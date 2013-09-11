@@ -112,6 +112,20 @@ vsns
     $(document).on 'page:load', initTagInput
     ```
 
+#### 2013년 9월 10일 => subicura 작업한 내용
+
+  * facebook 프로필 이미지 정보를 가지고와서 최초 계정생성시 사용
+  * devise에서 기본 제공하는 로그인화면(_links.erb)를 수정하여 로그인 폼을 변경
+  * vsns_config.yml을 설정파일로 사용 (ENV형식의 단점 보완)
+  * vsns_config.yml은 추후 ignore해야함
+
+
+#### 2013년 9월 9일 => subicura 작업한 내용
+
+  * devise와 omniauth를 이용하여 twitter/facebook 로그인 연동
+  * 기존에 있던 username column을 그대로 활용하여 "사용자이름"으로 사용 (unique)
+  * email을 보여주던 화면을 username으로 바꿈
+  * email을 수정하지 못하도록함 (login id 이므로..)
 
 #### 2013년 9월 9일 => Confidence 유닛 작업내용
 * omniauth, omniauth-github를 사용해 Github로 로그인하기 기능 추가
@@ -172,6 +186,7 @@ vsns
     ```
     config.assets.precompile += %w(editor.js editor.css)
     ```
+>>>>>>> 3be2c5a30f5e6dabf097712ba7600d4774d5be01
 
 #### 2013년 9월 9일 => (아장아장 유닛) yeonsik/master branch를 머지하고 refactoring함.
 

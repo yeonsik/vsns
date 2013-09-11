@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  # add username
+  validates_presence_of   :username
+  validates_uniqueness_of :username
+
   # Connect avatar attribute to Carrierwave Uploader.
   mount_uploader :avatar, ProfileUploader  
 
