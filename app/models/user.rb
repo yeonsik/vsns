@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  username               :string(255)
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  avatar                 :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
+#
+
 ###############################################################################
 #
 #   User Model Class      
@@ -16,8 +39,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   # add username
   validates_presence_of   :username
@@ -58,34 +82,36 @@ class User < ActiveRecord::Base
   has_many :communities_owned_by_me, class_name: 'Community', 
            foreign_key: :owner_id
 
-###############################################################################
-##
-##   Definitions of Method      
-##
-###############################################################################
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      logger.error "*"*20
-      logger.error auth.info.image
-      user.remote_avatar_url = auth.info.image
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.username = auth.info.nickname
-      user.email = auth.info.email
+  # Class methods
+  # -------------
+  def self.from_omniauth(auth, signed_in_resource=nil)
+    find_or_create_by(provider: auth[:provider], uid: auth[:uid]) do |user|
+      user.provider           = auth.provider
+      user.uid                = auth.uid
+      user.email              = auth.info.email
+      user.username           = auth.info.nickname
+      user.remote_avatar_url  = auth.info.image
+      user.password           = Devise.friendly_token[0, 20]
     end
   end
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"]) do |user|
+    if session['devise.user_attributes']
+      new(session['devise.user_attributes']) do |user|
         user.attributes = params
         user.valid?
       end
     else
       super
-    end    
+    end
   end
+
+###############################################################################
+##
+##   Definitions of Method      
+##
+###############################################################################
 
   def password_required?
     super && provider.blank?
@@ -98,7 +124,7 @@ class User < ActiveRecord::Base
       super
     end
   end
-   
+
   # Associate-Community Model
   # Methods: join!, leave!
   def join!(community)
@@ -138,6 +164,12 @@ class User < ActiveRecord::Base
   end
   def unfollow!(other_user)
     relationships.find_by(follower_id: other_user.id).destroy!
+  end
+
+  def owned_my_tag_counts
+    # items.tag_counts 은 Rails 4 의 relation 상에서 오류가남
+    # acts_as_taggable_on 이 업데이트 되기 전까지 다음과 같이 사용
+    Item.where(user_id: self.id).tag_counts
   end
 
 end

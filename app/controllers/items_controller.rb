@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index]
-  before_filter :set_communities_joined, only: [:index, :show, :edit, :new, :update, :create]
+  before_filter :set_communities_joined
+  # before_filter :set_communities_joined, only: [:index, :show, :edit, :new, :update, :create]
 
-  layout 'two_columns'
+  # layout 'two_columns'
 
   # GET /items
   # GET /items.json

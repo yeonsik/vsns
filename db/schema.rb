@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130909103904) do
+ActiveRecord::Schema.define(version: 20130909035104) do
 
   create_table "associates", force: true do |t|
     t.integer  "user_id"

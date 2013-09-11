@@ -44,7 +44,13 @@ end
 
 # commented out by hschoi due to incompatibility to summernote-rails
 # gem 'flatui-rails'
-gem 'summernote-rails'
+# gem 'summernote-rails'
+
+gem 'wmd-rails'
+
+# gem "markdown-rails"
+# gem "redcarpet"
+# gem "pygments.rb"
 
 gem 'slimbox2-rails'
 
@@ -60,6 +66,8 @@ gem 'rmagick'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
+
 #gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'authority'
 gem 'rolify'
@@ -74,6 +82,8 @@ gem 'acts-as-taggable-on'
 # Replace gem 'tagsinput-rails' with the following one for Bootstrap
 gem 'bootstrap-tagsinput-rails'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :development do
 
   # Use sqlite3 as the database for Active Record
@@ -83,6 +93,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'quiet_assets'
+  gem 'annotate'
 end
 
 group :production do

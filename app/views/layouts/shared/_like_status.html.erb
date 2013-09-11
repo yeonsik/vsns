@@ -8,7 +8,7 @@
     <span><%= likeable.likers.size %></span>
   <% end %>
   <%= link_to_unless( current_user.liking?(likeable), 'Like', like_likeable_path(current_user.id, likeable.class.name, likeable.id), class: 'dislike_state', remote: true) do %>
-  <%= link_to 'Liked', dislike_likeable_path(current_user.id, likeable.class.name, likeable.id), remote: true -%>
+    <%= link_to 'Liked', dislike_likeable_path(current_user.id, likeable.class.name, likeable.id), remote: true -%>
   <% end %>
 <% else %>
   <%= pluralize likeable.likers.size, 'Like' %>
