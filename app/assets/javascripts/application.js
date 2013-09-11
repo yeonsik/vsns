@@ -14,14 +14,18 @@
 // To resolve Turbolink problems, please reference http://blog.joshsoftware.com/2013/06/28/troubleshooting-turbolinks-with-rails-4/.
 //
 //= require jquery
-//= require jquery.turbolinks
+// require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require slimbox2.min
 //= require jquery.pageless
-//= require twitter/bootstrap
 //= require jquery.tokeninput
-//= require summernote.min
+//= require jquery.tokeninput
+//= require twitter/bootstrap
+//= require bootstrap
 //= require bootstrap-tagsinput
-//= require_tree .
+//= require slimbox2.min
+//= require wmd/showdown
+//= require items
+//= require comments
+//= require communities
 //= require turbolinks

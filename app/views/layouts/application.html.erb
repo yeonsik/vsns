@@ -36,6 +36,7 @@
     
 
     <%= javascript_include_tag "application" %>
+    <%= yield :head %>
   </head>
   <body>
 
@@ -45,7 +46,7 @@
       <div class="row-fluid">
         <div class="span10 offset1">
           <%= bootstrap_flash %>
-          <%= content_for?(:item_content) ? yield(:item_content) : yield %>
+          <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
       </div><!--/row-->
 

@@ -1,5 +1,5 @@
 module CommunitiesHelper
-  def list_of_communities(community)
+  def markup_community(community)
     if current_user.communities.exists? community
       content_tag(:li, id: "community_#{community.id}") do
         link_to(community.name, community) +

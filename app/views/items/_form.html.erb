@@ -6,7 +6,7 @@
     <div class="form-inputs">
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.try(:id) }  %>
       <%= f.input :photo, as: :file  %>
-      <%= f.input :remote_photo_url, placeholder: '또는 이미지 주소를 입력하세요.', label: false, input_html:{class:'span12'} %>
+      <%= f.input :remote_photo_url, placeholder: '또는 이미지 주소를 입력하세요.', label: false, input_html: { class:'span12' } %>
       <% if @item.photo? %>
       <div class='row-fluid'>
         <div style='margin-bottom:1em;'>
@@ -16,10 +16,35 @@
       </div>
       <% end %>
       <%#= f.input :url_ref, placeholder: '이 필드는 무슨 용도인지 모르겠습니다. ^^', input_html:{class:'span12'} %>
-      <%= f.input :description, input_html:{class: 'summernote span12', rows:5} %>
+
+      <ul class="nav nav-tabs">
+        <li class='active'><a href="#editor" data-toggle="tab">Description</a></li>
+        <li><a href="#preview" data-toggle="tab">Preview</a></li>
+        <li><a href="#output" data-toggle="tab">HTML Output</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="editor">
+          <div id='editor-button-bar'></div>
+          <div id='editor-help-panel'><%= render "layouts/shared/editor_help" %></div>
+          <%= f.input :description, label: false, input_html:{class: 'span12', rows:15} %>
+        </div>
+        <div class="tab-pane" id="preview">
+          <div id='editor-preview'></div>
+        </div>
+        <div class="tab-pane" id="output">
+          <div id='editor-output'></div>
+        </div>
+      </div>
+       
+      <script>
+        $(function () {
+          $('#myTab a:last').tab('show');
+        })
+      </script>
+        
       <div class='row-fluid'>
         <div class="span12">
-        <%= f.input :tag_list, input_html: { data: { tags: @item.tags } } %>
+        <%= f.input :tag_list, input_html: { class:'span12', data: { tags: @item.tags } } %>
         </div>
       </div>
     </div>

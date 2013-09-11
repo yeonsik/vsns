@@ -8,9 +8,9 @@
 	<ul id='community_list'>
   	<% if @communities_joined.size > 0 %>
 			<% @communities_joined.each_with_index do |community, index| %>		
-				<% if index < 10 %>
-					<%= list_of_communities(community) %>
-				<% else %>
+				<% if index < 10 %>  <!-- 본인이 가입한 커뮤니티를 최대 10개만 표시 -->
+					<%= markup_community(community) %>
+				<% else %> <!-- 10개를 넘어가면 more... 으로 표시하고 링크로 이동. -->
 					<li>> <%= link_to "#{(@communities_joined.size - 10)} more...", my_communities_path(@other_user.nil? ? current_user : @other_user) %></li>
 					<% break %>
 				<% end %>
