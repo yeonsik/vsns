@@ -3,6 +3,63 @@ vsns
 
 : Dev.Study - Official VSNS Repository since 2013.9.1
 
+#### 2013년 9월 11일 => 아장아장 유닛 작업내용
+
+* 이준헌님의 도움으로 pageless 기능 문제점 해결함
+
+  in items/index.html
+
+  ```
+  <div id="items" 
+    data-total-pages="<%= @items.total_pages %>" 
+    data-url="<%= items_path %>"
+    data-loader-image="<%= image_path('load1.gif') %>"> 
+    <%= render @items %>
+  </div>
+
+  <!--To apply bottom-less pagination using pageless jQuery plugin-->
+  <!--Gem : pageless-rails & will_paginate-->
+  <%= will_paginate @items %>
+  ```
+
+  in items.js.coffee
+
+  ```
+  initPageless = ->
+    $items = $('#items')
+
+    # items dom 존재여부 확인
+    return unless $items.length
+
+    # pageless 설정정보 dom에서 가져오기
+    opts =
+      totalPages  : $items.data('total-pages')
+      url         : $items.data('url')
+      loaderMsg   : 'Loading more pages...'
+      loaderImage : $items.data('loader-image')
+
+    # pageless 시작
+    $items.pageless opts
+
+  # pageless 초기화
+  resetPageless = ->
+    $items = $('#items')
+
+    return unless $items.length
+
+    $.pagelessReset()
+
+
+  $ -> 
+    initPageless()
+
+  # Turbolink 이벤트를 통한 처리
+  $(document).on 'page:load', initPageless
+  $(document).on 'page:before-change', resetPageless # 화면 전환전 pageless 초기화
+  ```  
+
+***
+
 #### 2013년 9월 10일 => 아장아장 유닛 작업내용
 
 * wmd editor의 turbolinks 문제를 이준헌님의 도움을 받아 깔끔하게 해결하였음(editor.js)
@@ -108,7 +165,7 @@ vsns
 
   * summernote-rails 젬을 wmd-rails 젬으로 대체하였습니다.  
   * wmd-rails 젬은 wmd 마크다운 에디터를 assets pipeline에서 쉽게 사용할 수 있도록 젬으로 만든 것입니다.  
-  * wmd-rails 젬을 사용할 때의 주의점은 wmd/wmd.js 파일내의 WMDEditor 객체는 editor-input 속성으로 지정된 DOM 객체가 없는 경우 스크립트 에러를 발생합니다. 따라서 폼 뷰 템플릿에서만 wmd/wmd.js 파일을 포함해야 한다는 것입니다. 따라서 items 컨트롤러 전용 레이아웃 파일인 items.html.erb 파일을 만들었고, 여기에 editor.js 와 editor.css 파일을 포함하도록 하였습니다.   
+  * wmd-rails 젬을 사용할 때의 주의점은 wmd/wmd.js 파일내의 WMDEditor 객체는 editor-input 속성으로 지정된 DOM 객체가 없는 경우 스크립트 에러를 발생합니다. 따라서 폼 뷰 템플릿에서만 wmd/wmd.js 파일을 포함해야 한다는 것입니다. 이를 위해 items 컨트롤러 전용 레이아웃 파일인 items.html.erb 파일을 만들었고, 여기에 editor.js 와 editor.css 파일을 포함하도록 하였습니다.   
   * items의 show 뷰 템플릿에서는 마크다운 컨텐츠를 보여주기 위해 wmd/showdown.js 파일을 사용합니다. 따라서 이 자바스크립트 파일은 application.js manifest 파일에 포함해 주었습니다.  
   * 이러한 조치를 취하기 위해서는 manifest 파일(applicaiton.js, application.css) 파일내의 `require_tree . ` 라인을 제거하고 필요로 하는 모든 파일을 명시적으로 포함해야 합니다. 이와 연관하여 editor.js와 editor.css 파일을 precompile 시에 포함시키기 위해서 아래와 같이 application.rb 파일에 코드라인을 추가해 주어야 합니다. 
 
